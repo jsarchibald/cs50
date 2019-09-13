@@ -4,6 +4,8 @@
 
 [CS50 Sandbox](http://bit.ly/2UOBF2i)
 
+[Exercises](exercises/week2.md)
+
 [Attendance](https://forms.cs50.io/5d5b44df-3268-4585-b49e-7d36c178e71f)
 
 
