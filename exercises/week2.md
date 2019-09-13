@@ -2,6 +2,8 @@
 
 Exercises designed by Joshua Archibald for the section of [week 2 of CS50](https://cs50.harvard.edu/college/weeks/2).
 
+Exercises can be completed using [this CS50 Sandbox](http://bit.ly/2UOBF2i).
+
 ## Introductions
 
 Most likely, most of us here don't know each other's names! Since we'll be getting to know each other over the course of the semester, it would be really great if we could start to learn each other's names.
