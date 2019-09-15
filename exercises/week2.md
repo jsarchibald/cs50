@@ -1,6 +1,6 @@
 # Week 2 Exercises
 
-Exercises designed by Joshua Archibald for the section of [week 2 of CS50](https://cs50.harvard.edu/college/weeks/2).
+Exercises designed by Joshua Archibald (and CS50 staff) for the section of [week 2 of CS50](https://cs50.harvard.edu/college/weeks/2).
 
 Exercises can be completed using [this CS50 Sandbox](http://bit.ly/2UOBF2i).
 
