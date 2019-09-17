@@ -57,6 +57,7 @@ Fernando has the longest name, at 8 characters!
 - How might we count the number of characters in a string?
 - How can we keep track of who has the longest name?
 - How can we keep track of the length of the longest name?
+- What should we do if multiple people are tied for longest name? (For the purposes of this exercise, just return the first name of that length. But think about some other solutions.)
 
 ### Stretch Questions
 
