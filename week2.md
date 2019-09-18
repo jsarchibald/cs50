@@ -56,7 +56,7 @@ For example, if we were to write a function to square an integer, we expect to i
 ```c
 int square(int i)
 {
-	return i * i;
+    return i * i;
 }
 
 ```
@@ -72,7 +72,7 @@ Recall that we, by convention, start the main function (the main program) someth
 ```c
 int main(void)
 {
-	...
+    ...
 }
 ```
 
