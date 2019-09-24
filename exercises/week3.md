@@ -137,7 +137,7 @@ Value 4: 7
 
 ## Selection Sort
 
-Selection sort works by finding the smallest element in an unsorted array, swapping it with the element currently in the 0th index of the array, then repeating on the rest of the unsorted array (1st through last indices). For example, given [2, 1, 8, 4, 7] the array will look like this over time:
+Selection sort works by finding the smallest element in an unsorted array, swapping it with the element currently in the 0th index of the array, then repeating on the rest of the unsorted array (1st through last indices). For example, given an array  `[2, 1, 8, 4, 7]` the array will look like this over time:
 
 ```c
 [2, 1, 8, 4, 7]
