@@ -65,6 +65,17 @@ Hannah, 2022, lives in Kirkland.
 - Recall from last week how to get command-line arguments and loop through for input. What is different about this problem? What prior knowledge can you apply here?
 
 
+## Factorial
+
+Write a recursive function `factorial` that takes an integer `n` and computes its factorial. (The factorial of 5, for example, is 5 * 4 * 3 * 2 * 1 = 120).
+
+Distro code is in `factorial.c`.
+
+### Guiding Questions
+
+- What does it mean for a function to be recursive?
+
+
 ## Fibonacci
 
 We learned in lecture 3 about recursion. In simple terms, we break down a problem programatically and repeatedly call the same function on an increasingly smaller subset of the problem in order to solve the larger problem at hand.
