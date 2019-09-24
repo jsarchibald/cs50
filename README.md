@@ -10,3 +10,4 @@ Note that sections are numbered in accordance with weeks in the course - so the 
 ## Weeks
 
 [Week 2](week2.md)
+[Week 3](week3.md)
