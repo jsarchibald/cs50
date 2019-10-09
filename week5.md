@@ -6,7 +6,7 @@
 
 [Exercises](exercises/week5.md)
 
-Exercise solutions (coming Tuesday night)
+[Exercise solutions](http://bit.ly/2nuHe9K)
 
 [Attendance](https://forms.cs50.io/ee095734-a61d-44df-99b8-a695cf5b9a9f)
 
