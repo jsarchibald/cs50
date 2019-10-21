@@ -16,3 +16,5 @@ Note that sections are numbered in accordance with weeks in the course - so the 
 [Week 4](week4.md)
 
 [Week 5](week5.md)
+
+[Week 6](week6.md)
