@@ -4,25 +4,6 @@ Exercises designed by Josh Archibald for the section of [week 6 of CS50](https:/
 
 Exercises can be completed using [this CS50 Sandbox]().
 
-Goals:
-- basics of coding in Python
-    - dictionaries
-    - loops
-    - conditions
-- CSV files
-- reading text files
-
-
-## Factorial (recursion in Python)
-
-Write a recursive function `factorial` that takes an integer `n` and computes its factorial. (The factorial of 5, for example, is 5 * 4 * 3 * 2 * 1 = 120).
-
-Distro code is in `factorial.c`.
-
-### Guiding Questions
-
-- What does it mean for a function to be recursive?
-
 
 ## Smoots
 
@@ -35,6 +16,14 @@ The Smoot measurements are repainted every few years by MIT students, so you can
 **One chilly October night in 2019**, Asia, Chris, and Erik decide to race from the MIT side of the bridge to Boston. Whoever finishes first doesn't have to help pay for dinner on Newbury Street. Being MIT students, they have affixed to their ankles devices they manufactured in [2.009](http://web.mit.edu/2.009/www/index.html) (see [here](https://www.youtube.com/watch?v=J-ToBoJWVlg) for an amusing video featuring the class's professor) which record each runner's time, distance, velocity, and acceleration randomly.
 
 Let's write some Python to predict who is the winner based on the data saved in `race.csv`. Some parameters for these data: each person can only have one data point recorded; if multiple points are available, use the last one in the file. Each point will store the time and the person's position, velocity, and acceleration (all of these will use Smoots as the unit of measurement for distance rather than meters or feet).
+
+### Usage
+
+Most of the usage details are handled for you in `race.py`. Read through that file to gain an understanding of how to check argv and call functions from `helpers.py`.
+
+```
+python race.py <datafile.csv>
+```
 
 ### Background
 
@@ -90,3 +79,38 @@ Write a function `clean_data(data)` that takes in a list of data points and sele
 ### Print Winner
 
 Write a function `print_winner(data)` that takes in a list of statistics (including person, total time, average velocity, and final velocity) and prints the name of the person with the shortest time.
+
+
+## Message Descrambler
+
+Pop culture is obsessed with the idea of hidden messages in audio recordings. Most notable is the idea of using [backmasking](https://en.wikipedia.org/wiki/Backmasking) to record messages backwards. Obsessions like these led to accusations of musicians including demonic messaging in their work in the twentieth century, perhaps most memorably in Led Zeppelin's [Stairway to Heaven](https://en.wikipedia.org/wiki/Stairway_to_Heaven#Claims_of_backmasking).
+
+As it turns out, while looking through an old email account, we have stumbled upon a seemingly meaningless audio file, `mystery.wav`, which appears to just feature noise. Pretty useless. But, perhaps there's a secret message embedded within this file - we found in another email a weird CSV file `mystery.wav.csv` that appears to be related to our audio file. Upon inspecting `mystery.wav.csv`, we see that it has two fields: `From` and `To`. Maybe this file was scrambled by moving audio frames around according to the data recorded in the CSV file! Let's write a program to find out.
+
+### Usage
+
+Most of the usage details are handled for you in `unmix.py`. Read through that file to gain an understanding of how to check argv and call functions from `helpers.py`.
+
+```
+python unmix.py <in.wav> <in.csv> <out.wav>
+```
+
+### Background
+
+A `wav` audio file stores sound as a series of "frames." To make the audio playback work, the file also stores the frame rate, number of frames, and a few other pieces of information so that audio players know the rate at which to play the sound data stored in binary. (It's kind of like video - frames played at a certain rate - just without pictures and with sound instead.)
+
+In `mystery.wav.csv` the two columns of information store the location `From` which the frame at location `To` was taken. In other words, when scrambling the audio, the scrambler program saved the frame's original location to `From` and its destination to `To`. To descramble `mystery.wav`, we'll need to move frames back to their original locations.
+
+### Loading data
+
+Write a function `import_data(filename)` that imports data from a CSV file into a list of Python dictionaries. (Hint: look at the `csv` Python package and its `DictReader` class.) Depending on your implementation in **Smoots** you may be able to use the same function you wrote for that problem.
+
+### Replace frames
+
+Write a function `replace_frames(infile, reorders)` that puts frames into the right order, returning a list of binary objects. You are given the input file pointer (e.g. the `mystery.wav` pointer) and the list of reorders you collected in `import_data` (e.g. a list of dictionaries with `From` and `To` fields).
+
+For this part of the problem, you will want to look at the documentation for the Python `wave` package and specifically on wave_read objects [here](https://docs.python.org/3/library/wave.html#wave-read-objects). (Hint: you can call these functions like this: `infile.close()`.)
+
+### Combine bytes
+
+Write a function `combine_bytes(reorder)` that takes a list of bytes and outputs a single binary object that combines, in order, all the elements of the list.
