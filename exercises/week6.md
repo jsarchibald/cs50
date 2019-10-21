@@ -2,7 +2,7 @@
 
 Exercises designed by Josh Archibald for the section of [week 6 of CS50](https://cs50.harvard.edu/college/weeks/6).
 
-Exercises can be completed using [this CS50 Sandbox]().
+Exercises can be completed using [this CS50 Sandbox](http://bit.ly/31A4fpI).
 
 
 ## Smoots
