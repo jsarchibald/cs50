@@ -60,7 +60,7 @@ Write a function `time(d, vi, vf)` that takes in a distance to the end, initial 
 
 ### Smoots to meters
 
-All of the measurements in `race.csv` were in Smoots. Write a function `s_to_m` to convert Smoots to meters. (Hint: there are `1.078` meters in a Smoot.)
+All of the measurements in `race.csv` were in Smoots. Write a function `s_to_m(smoots)` to convert Smoots to meters. (Hint: there are `1.078` meters in a Smoot.)
 
 ![The math for Smoots to meters](https://latex.codecogs.com/gif.latex?m%20%3D%201.078s "The math for Smoots to meters")
 
