@@ -16,3 +16,5 @@
 [SEAS Four-Year Plan of Courses](https://info.seas.harvard.edu/courses/#/multiYearPlan)
 
 [MIT Course 6 Classes](http://student.mit.edu/catalog/m6a.html)
+
+[Guide to Git](https://guides.github.com/introduction/git-handbook/)
