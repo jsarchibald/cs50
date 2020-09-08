@@ -1,4 +1,4 @@
-# CS50 - Fall 2019
+# CS50 - Fall 2020
 Section materials for Josh Archibald's fall 2020 section of Harvard's CS50.
 
 Contact Josh at [jarchibald@college.harvard.edu](mailto:jarchibald@college.harvard.edu).
