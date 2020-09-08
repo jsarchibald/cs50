@@ -1,5 +1,0 @@
-lab50:
-  files:
-    - !include helpers.py
-    - !include race.py
-    - !include race.csv
