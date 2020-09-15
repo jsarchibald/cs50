@@ -14,3 +14,5 @@ I'll be keeping track of any links I keep in the notes of my slides, or send ove
 ## Weeks
 
 [Week 1](week1.md)
+
+[Week 2](week2.md)
