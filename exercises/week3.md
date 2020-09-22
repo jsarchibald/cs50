@@ -40,6 +40,11 @@ students[0].house = "Mather";
 
 Let's create a program in `struct.c` to populate an array of a struct of your creation. This struct can be anything you want. I already wrote the loops for you, you just need to write the code to (a) create the struct, (b) fill up each struct with data, and (c) print out the data from each item in the array.
 
+To get the distro code, run in your CS50 IDE:
+
+`wget https://raw.githubusercontent.com/jsarchibald/cs50/2020/fall/exercises/distro/struct.c`
+
+
 ### Usage
 
 An example with students may behave something like this:
@@ -70,6 +75,10 @@ Hannah, 2022, would normally live in Kirkland.
 Write a recursive function `factorial` that takes an integer `n` and computes its factorial. (The factorial of 5, for example, is 5 * 4 * 3 * 2 * 1 = 120).
 
 Distro code is in `factorial.c`. The only rule is that you can't use any loops.
+
+To get the distro code, in your CS50 IDE run:
+
+`wget https://raw.githubusercontent.com/jsarchibald/cs50/2020/fall/exercises/distro/factorial.c`
 
 ### Guiding Questions
 
