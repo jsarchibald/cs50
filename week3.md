@@ -4,7 +4,7 @@
 
 [Exercises](exercises/week3.md)
 
-Exercise solutions - released after section
+[Exercise solutions](https://vault.cs50.io/e21b3e81-fe09-4c47-b833-a3b85e90123c)
 
 
 ## Group work slides
@@ -31,8 +31,3 @@ Exercise solutions - released after section
 [Video on merge sort](https://www.youtube.com/watch?v=Ns7tGNbtvV4)
 
 [Video on algorithms](https://www.youtube.com/watch?v=ktWL3nN38ZA)
-
-
-## FAQs
-
-Coming soon.

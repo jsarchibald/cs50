@@ -18,3 +18,5 @@ I'll be keeping track of any links I keep in the notes of my slides, or send ove
 [Week 2](week2.md)
 
 [Week 3](week3.md)
+
+[Week 4](week4.md)

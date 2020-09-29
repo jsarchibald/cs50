@@ -4,7 +4,7 @@
 
 [Exercises](exercises/week2.md)
 
-Exercise solutions - released after section
+[Exercise solutions](https://vault.cs50.io/ee044d69-383a-4dd7-97e9-285aca2cf6d5)
 
 
 ## Extra resources
@@ -16,8 +16,3 @@ Exercise solutions - released after section
 [Video on the command line](https://www.youtube.com/watch?v=thL7ILwRNMM)
 
 [Video on debugging](https://www.youtube.com/watch?v=w4TAY2HPLEg)
-
-
-## FAQs
-
-Coming soon.
