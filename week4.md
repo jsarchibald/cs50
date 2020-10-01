@@ -4,7 +4,7 @@
 
 [Exercises](exercises/week3.md)
 
-Exercise solutions - released after section
+[Exercise solutions](https://vault.cs50.io/7728a3ad-f2d4-454c-be3c-a60b3a14c53a)
 
 
 ## Extra resources
