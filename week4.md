@@ -2,7 +2,7 @@
 
 [Slides](https://docs.google.com/presentation/d/1Z7cFc0X9RCW60ykv25OL3qYjeuZHUJ0FHRUcGlP7qv8/edit?usp=sharing)
 
-[Exercises](exercises/week3.md)
+[Exercises](exercises/week4.md)
 
 [Exercise solutions](https://vault.cs50.io/7728a3ad-f2d4-454c-be3c-a60b3a14c53a)
 
