@@ -1,4 +1,4 @@
-# Week 4: Memory
+# Week 5: Data Structures
 
 [Slides](https://docs.google.com/presentation/d/1fvPz3y4Q_8IzYbzk1ZlK2Eeken_NkQv6DCM7qMGD0m4/edit?usp=sharing)
 
