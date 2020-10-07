@@ -1,3 +1,5 @@
 .vscode
 env
 frames
+__pycache__
+*.db
