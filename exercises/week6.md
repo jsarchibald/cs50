@@ -106,9 +106,11 @@ For this part of the problem, you will want to look at the documentation for the
 #### Specification
 
 1. Create a list, with the number of elements equal to the number of frames in the `wave` file, and initialize each element to `None`, the Python equivalent of `NULL`.
-2. Loop through the `reorders` list -- each element is a dictionary with keys `Scrambled` and `Original`.
+2. Loop through the `reorders` list -- each element is a dictionary with keys `Scrambled` and `Original`, and values that are frame numbers.
+   - When using the frame numbers, you'll want to convert from string to integer, e.g. `int(row["Original"])`.
    - Move to the frame indicated by `Scrambled`, as by using `infile.setpos(frame_number)`.
    - Then, set the `Original`th element of the empty list you created to be equal to the frame at the current file pointer location in the `wave` file. To get the frame, use `infile.readframes(1)`.
+3. Return the list you created in step 1 and modified in step 2.
 
 #### Hints
 
@@ -117,6 +119,14 @@ This one is especially tricky, so here are some hints!
 - To get the number of frames in the `wave` file, you can use `infile.getnframes()`. To create a list filled with NULL values, or `None` in Python, that has as many NULLs/Nones as the number of frames, you can write `reordered = [None] * infile.getnframes()`.
 - To go to a particular frame, you can use `infile.setpos(frame_number)`.
 - To get one frame, you can use `infile.readframes(1)`.
+
+### Testing
+
+Run this to test!
+
+`python unmix.py mystery.wav mystery.wav.csv output.wav`
+
+Then listen to `output.wav` to see if it worked!    
 
 
 
