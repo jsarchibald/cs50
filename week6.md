@@ -4,7 +4,7 @@
 
 [Exercises](exercises/week6.md)
 
-Exercise solutions released after class
+[Exercise solutions](https://vault.cs50.io/8763c0f0-c030-44a3-b124-4fbc21eaecc4)
 
 
 ## Extra resources
