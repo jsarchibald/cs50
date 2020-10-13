@@ -1,1 +1,0 @@
-web: gunicorn python-intro:app
