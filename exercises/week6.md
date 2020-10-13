@@ -91,7 +91,7 @@ python unmix.py <in.wav> <in.csv> <out.wav>
 
 A `wav` audio file stores sound as a series of "frames." To make the audio playback work, the file also stores the frame rate, number of frames, and a few other pieces of information so that audio players know the rate at which to play the sound data stored in binary. (It's kind of like video - frames played at a certain rate - just without pictures and with sound instead.)
 
-In `mystery.wav.csv` the two columns of information store the location `From` which the frame at location `To` was taken. In other words, when scrambling the audio, the scrambler program saved the frame's original location to `From` and its destination to `To`. To descramble `mystery.wav`, we'll need to move frames back to their original locations.
+In `mystery.wav.csv` the two columns of information store the location `Original` which the frame at location `Scrambled` was taken. In other words, when scrambling the audio, the scrambler program saved the frame's original index in the list of frames to `Original` and its destination index to `Scrambled`. To descramble `mystery.wav`, we'll need to move frames back to their original locations.
 
 ### Loading data
 
@@ -99,13 +99,24 @@ Write a function `import_data(filename)` that imports data from a CSV file into 
 
 ### Replace frames
 
-Write a function `replace_frames(infile, reorders)` that puts frames into the right order, returning a list of binary objects. You are given the input file pointer (e.g. the `mystery.wav` pointer) and the list of reorders you collected in `import_data` (e.g. a list of dictionaries with `From` and `To` fields).
+Write a function `replace_frames(infile, reorders)` that puts frames into the right order, returning a list of binary objects. You are given the input file pointer (e.g. the `mystery.wav` pointer) and the list of reorders you collected in `import_data` (e.g. a list of dictionaries with `Original` and `Scrambled` fields).
 
 For this part of the problem, you will want to look at the documentation for the Python `wave` package and specifically on wave_read objects [here](https://docs.python.org/3/library/wave.html#wave-read-objects). (Hint: you can call these functions like this: `infile.close()`.)
 
-### Combine bytes
+#### Specification
 
-Write a function `combine_bytes(reorder)` that takes a list of bytes and outputs a single binary object that combines, in order, all the elements of the list.
+1. Create a list, with the number of elements equal to the number of frames in the `wave` file, and initialize each element to `None`, the Python equivalent of `NULL`.
+2. Loop through the `reorders` list -- each element is a dictionary with keys `Scrambled` and `Original`.
+   - Move to the frame indicated by `Scrambled`, as by using `infile.setpos(frame_number)`.
+   - Then, set the `Original`th element of the empty list you created to be equal to the frame at the current file pointer location in the `wave` file. To get the frame, use `infile.readframes(1)`.
+
+#### Hints
+
+This one is especially tricky, so here are some hints!
+
+- To get the number of frames in the `wave` file, you can use `infile.getnframes()`. To create a list filled with NULL values, or `None` in Python, that has as many NULLs/Nones as the number of frames, you can write `reordered = [None] * infile.getnframes()`.
+- To go to a particular frame, you can use `infile.setpos(frame_number)`.
+- To get one frame, you can use `infile.readframes(1)`.
 
 
 

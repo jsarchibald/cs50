@@ -5,11 +5,14 @@ def replace_frames(infile, reorders):
     return list()
 
 
-def combine_bytes(reorder):
-    """Combine list of bytes into one binary sequence"""
-    return b''
-
-
 def import_data(filename):
     """Imports CSV data from filename and returns a list of rows"""
     return list()
+
+
+def combine_bytes(reorder):
+    """Combine list of bytes into one binary sequence"""
+    o = b''
+    for r in reorder:
+        o += r
+    return o
