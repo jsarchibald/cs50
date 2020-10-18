@@ -140,10 +140,16 @@ check50 jsarchibald/cs50/2020/fall/exercises/7/start
 
 Okay, we now have our database schema set up and have practiced some insertions. Now let's do the heavy lifting of adding a bunch of data. It's actually heavy lifting I did for you -- you just need to run the simulation script. (It could be fun to read through it and see how it works, though!)
 
-Basically just run:
+First download the script:
 
 ```
-python simulate.py <name of cabbage database file>
+wget https://raw.githubusercontent.com/jsarchibald/cs50/2020/fall/exercises/distro/cabbages/simulate.py
+```
+
+Then just run:
+
+```
+python simulate.py
 ```
 
 And just like that, we have a bunch of cabbage sales (and a few new customers). Now we can do something with that data.
