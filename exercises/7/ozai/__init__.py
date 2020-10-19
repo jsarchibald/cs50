@@ -37,7 +37,7 @@ def update_works():
 
     check50.run("sqlite3 cabbages.db < ozai.sql")
 
-    if db.execute("SELECT COUNT(id) FROM invoices WHERE customer_id=?", ozai_id["id"]) > 0:
+    if db.execute("SELECT COUNT(id) FROM invoices WHERE customer_id=?", ozai_id[0]["id"]) > 0:
         raise check50.Failure("UPDATE query fails to erase all references to Ozai in invoices")
 
 
