@@ -81,13 +81,26 @@ Let's create the `customers` table together:
 
 ```sql
 CREATE TABLE customers (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     email TEXT NOT NULL
 );
 ```
 
-So, we're creating a table called `customers`. This table has three columns: an `id`, which is the "Primary Key" of the table and is set to start at 1 and increase automatically whenever we insert rows (`AUTOINCREMENT`). A name, which is a `TEXT` field and must have a value (`NOT NULL`), and an email, which has the same type and requirement as the name.
+So, we're creating a table called `customers`. This table has three columns: an `id`, which is the "Primary Key" of the table and is set to start at 1 and increase automatically whenever we insert rows (`INTEGER PRIMARY KEY` is an alias for the `ROWID` in SQLite, per documentation [here](https://www.sqlite.org/autoinc.html)). A name, which is a `TEXT` field and must have a value (`NOT NULL`), and an email, which has the same type and requirement as the name.
+
+Equivalently, we could have defined the primary key like this:
+
+```sql
+CREATE TABLE customers (
+    id INTEGER,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    PRIMARY KEY(id)
+);
+```
+
+This is closer to what you saw in lecture. Both are correct. The latter syntax is particularly useful if you want a primary key consisting of more than one column; the former is a useful shorthand. (Read [here](https://www.sqlitetutorial.net/sqlite-primary-key) if curious.)
 
 Cool! We now have a customers table. Go ahead and use similar syntax to create the `invoices` and `cabbages` tables, making sure to match the schemas defined at the top of this section.
 
