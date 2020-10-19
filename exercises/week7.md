@@ -44,15 +44,15 @@ SQLite has a handy command-line program we can use to work with databases (kind 
 Let's get this database started! Cabbage Man is hoping to have three tables to get off the ground:
 
 - customers
-  - id (INTEGER, PRIMARY KEY, AUTOINCREMENT)
+  - id (INTEGER, PRIMARY KEY)
   - name (TEXT, NOT NULL)
   - email (TEXT, NOT NULL)
 - invoices
-  - id (INTEGER, PRIMARY KEY, AUTOINCREMENT)
+  - id (INTEGER, PRIMARY KEY)
   - customer_id (INTEGER, NOT NULL)
   - total_value (REAL, NOT NULL)
 - cabbages
-  - id (INTEGER, PRIMARY KEY, AUTOINCREMENT)
+  - id (INTEGER, PRIMARY KEY)
   - cabbage_type (TEXT, NOT NULL)
   - batch_id (INTEGER, NOT NULL)
   - invoice_id (INTEGER, NOT NULL)
