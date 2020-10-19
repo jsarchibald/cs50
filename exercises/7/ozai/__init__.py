@@ -37,9 +37,9 @@ def update_works():
 
     db._close_session()
 
-    check50.run("sqlite3 cabbages.db < ozai.sql")
+    res = check50.run("sqlite3 cabbages.db < ozai.sql").stdout()
 
-    res = check50.run('sqlite3 cabbages.db "SELECT id FROM invoices WHERE customer_id={}"'.format(ozai_id[0]["id"])).stdout()
+    #res = check50.run('sqlite3 cabbages.db "SELECT id FROM invoices WHERE customer_id={}"'.format(ozai_id[0]["id"])).stdout()
     res2 = check50.run('sqlite3 cabbages.db "SELECT id FROM invoices WHERE customer_id={}"'.format(ozai_id[0]["id"])).stdout()
     raise check50.Mismatch(res, res2)
 
