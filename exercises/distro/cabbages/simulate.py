@@ -113,7 +113,7 @@ def simulate():
 
     # Create invoices
     invoice_query = "INSERT INTO invoices (customer_id, total_value) VALUES"
-    cabbage_query = "INSERT INTO cabbages (type, batch_id, invoice_id, value) VALUES"
+    cabbage_query = "INSERT INTO cabbages (cabbage_type, batch_id, invoice_id, value) VALUES"
 
     for invoice in range(INVOICES):
         customer_id = name_to_id[random.choice(list(CHARACTERS.keys()))]

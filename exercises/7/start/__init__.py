@@ -25,10 +25,10 @@ def cabbages_table():
     """cabbages table contains correct columns"""
 
     res = check50.run('sqlite3 cabbages.db ".schema cabbages"').stdout()
-    expected = "CREATE TABLE cabbages (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\ntype TEXT NOT NULL,\nbatch_id INTEGER NOT NULL,\n    invoice_id INTEGER NOT NULL,\n    value REAL NOT NULL\n);\n"
+    expected = "CREATE TABLE cabbages (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\ncabbage_type TEXT NOT NULL,\nbatch_id INTEGER NOT NULL,\n    invoice_id INTEGER NOT NULL,\n    value REAL NOT NULL\n);\n"
 
     passing = True
-    for item in ["id INTEGER PRIMARY KEY AUTOINCREMENT", "type TEXT NOT NULL", "batch_id INTEGER NOT NULL", "invoice_id INTEGER NOT NULL", "value REAL NOT NULL"]:
+    for item in ["id INTEGER PRIMARY KEY AUTOINCREMENT", "cabbage_type TEXT NOT NULL", "batch_id INTEGER NOT NULL", "invoice_id INTEGER NOT NULL", "value REAL NOT NULL"]:
         if item not in res:
             passing = False
 
