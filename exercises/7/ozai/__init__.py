@@ -39,7 +39,7 @@ def update_works():
     n = db.execute("SELECT COUNT(id) FROM invoices WHERE customer_id=?", ozai_id[0]["id"])
 
     if n[0]["COUNT(id)"] > 0:
-        raise check50.Failure("UPDATE query fails to erase all references to Ozai in invoices")
+        raise check50.Mismatch("UPDATE query fails to erase all references to Ozai in invoices", n)
 
 
 @check50.check(update_works)
