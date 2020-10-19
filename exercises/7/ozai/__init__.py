@@ -35,8 +35,6 @@ def update_works():
     db = SQL("sqlite:///cabbages.db")
     ozai_id = db.execute("SELECT id FROM customers WHERE name=?", "Ozai")
 
-    db._close_session()
-
     res = check50.run("sqlite3 cabbages.db < ozai.sql").stdout()
     res2 = check50.run('sqlite3 cabbages.db "SELECT id FROM invoices WHERE customer_id={}"'.format(ozai_id[0]["id"])).stdout()
     
