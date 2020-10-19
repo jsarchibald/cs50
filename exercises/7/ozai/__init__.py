@@ -36,7 +36,8 @@ def update_works():
     ozai_id = db.execute("SELECT id FROM customers WHERE name=?", "Ozai")
 
     check50.run("sqlite3 cabbages.db < ozai.sql")
-    db.execute("SELECT * FROM invoices")
+
+    db = SQL("sqlite:///cabbages.db")
     n = db.execute("SELECT COUNT(id) FROM invoices WHERE customer_id=?", ozai_id[0]["id"])
 
     if n[0]["COUNT(id)"] > 0:
