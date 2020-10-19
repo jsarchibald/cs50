@@ -13,7 +13,7 @@ For those who haven't watched, there is a running gag in the show involving a ca
 
 [![Cabbages](https://img.youtube.com/vi/GrobFjIRRCc/0.jpg)](https://www.youtube.com/watch?v=GrobFjIRRCc)
 
-Today, we will be helping the cabbage man to organize his cabbages with a SQL database. Let's get started!
+Today, we will be helping the cabbage man organize his cabbages with a SQL database. Let's get started!
 
 
 ### 0. Open the CS50 IDE.
@@ -44,19 +44,19 @@ SQLite has a handy command-line program we can use to work with databases (kind 
 Let's get this database started! Cabbage Man is hoping to have three tables to get off the ground:
 
 - customers
-  - id
-  - name
-  - email
+  - id (INTEGER, PRIMARY KEY, AUTOINCREMENT)
+  - name (TEXT, NOT NULL)
+  - email (TEXT, NOT NULL)
 - invoices
-  - id
-  - customer_id
-  - total_value
+  - id (INTEGER, PRIMARY KEY, AUTOINCREMENT)
+  - customer_id (INTEGER, NOT NULL)
+  - total_value (REAL, NOT NULL)
 - cabbages
-  - id
-  - type
-  - batch_id
-  - invoice_id
-  - value
+  - id (INTEGER, PRIMARY KEY, AUTOINCREMENT)
+  - cabbage_type (TEXT, NOT NULL)
+  - batch_id (INTEGER, NOT NULL)
+  - invoice_id (INTEGER, NOT NULL)
+  - value (REAL, NOT NULL)
 
 From this we know what the *schema* of the database should look like. Now we just have to write the actual SQL to make it happen.
 
@@ -155,7 +155,7 @@ python simulate.py
 And just like that, we have a bunch of cabbage sales (and a few new customers). Now we can do something with that data.
 
 
-### 5b. Switch to a SQL file for the rest of this.
+### 5b. Switch to SQL files for the rest of this.
 
 We're going to be writing some longer SQL statements for the rest of this exercise, so best to go ahead and create some SQL files so you can edit them and change them incrementally. (Writing longer code in the SQLite program is possible, just tedious.)
 
@@ -167,7 +167,7 @@ touch ozai.sql recall.sql
 
 ### 5c. If you run into trouble, reset your database.
 
-If your code behaves unexpectedly, not to worry. The simulation program you just ran in **(5a)** stored a version of your `cabbages.db` before you ran it as well as after. To reset your database, just run one of:
+If your code behaves unexpectedly, not to worry. The simulation program you just ran in **(5a)** stored a version of your `cabbages.db` before you ran it as well as right after. To reset your database, just run one of:
 
 ```
 python simulate.py -r before
@@ -243,7 +243,7 @@ When you run the `sqlite3 cabbages.db < ozai.sql` command again, you should hope
 
 #### Deleting Ozai's entry
 
-This last part is relatively simpler compared to the previous one. We're just using the `DELETE` syntax (W3Schools reference [here](https://www.w3schools.com/sql/sql_delete.asp)) to delete Ozai's row in the `customers` table. We know from W3Schools that the general syntax for this looks something like:
+This last part is relatively simple compared to the previous one. We're just using the `DELETE` syntax (W3Schools reference [here](https://www.w3schools.com/sql/sql_delete.asp)) to delete Ozai's row in the `customers` table. We know from W3Schools that the general syntax for this looks something like:
 
 ```sql
 DELETE FROM table_name WHERE condition; 
@@ -284,7 +284,7 @@ check50 jsarchibald/cs50/2020/fall/exercises/7/ozai
 
 Use `recall.sql` to write your answers for this part.
 
-As we saw in the contextualizing video clip at the beginning of this page, the cabbage merchant sometimes has shoddy quality control. This, unfortunately, is one of those times. Cabbage number **433** has been found to be defective, and we have to recall the entire batch. Ultimately, we want to know how many cabbages were affected, their average (and total) value, and get the emails of the customers we should contact about the problem.
+As we saw in the contextualizing video clip at the beginning of this page, the cabbage merchant sometimes has shoddy quality control. This, unfortunately, is one of those times. Cabbage number **433** has been found to be defective, and we have to recall the entire batch. Ultimately, we want to know how many cabbages were affected, their average (and total) value, and get the names and emails of the customers we should contact about the problem.
 
 
 #### How many cabbages were affected?
@@ -304,15 +304,15 @@ We can make the `condition` include a nested statement to get the `batch_id` of 
 ```sql
 SELECT COUNT(id)
 FROM cabbages
-WHERE batch_id = (batch ID of cabbage # 433); 
+WHERE batch_id = (batch ID of cabbage 433); 
 ```
 
-You should be able to finish this statement with the information provided. Write your answer in `recall.sql`
+You should be able to finish this statement with the information provided. Write your answer in `recall.sql`.
 
 
 #### What's the average and total value of the affected cabbages?
 
-These modifications should look very similar to your answer to the previous question, but instead use the `AVG` and `SUM` functions to deal with the `value` column of the `cabbages` table. Append your solutions to `recall.sql`.
+These queries should look very similar to your answer to the previous question, but instead of `COUNT`, use the `AVG` and `SUM` functions to deal with the `value` column of the `cabbages` table. Append your solutions to `recall.sql`.
 
 
 #### Who do we need to notify?
@@ -328,17 +328,15 @@ Finally, we'll want to get the `name` and `email` of each customer who has a cus
 
 #### Testing
 
-Everything in `recall.sql` should ultimately take the form of a `SELECT` statement. Expected answers are as follows:
+Everything in `recall.sql` should ultimately take the form of a `SELECT` statement. The `check50` command below will check for exact answers, since there is randomness in the simulation.
 
-- 300 cabbages affected.
-- Average cabbage value: around $3.
-- Total cabbage value: around $900.
-- Customers to notify: 6 - Aang, Iroh, Katara, Vaatu, Wan Shi Tong, Zuko.
+- Affected cabbages: non-zero.
+- Average cabbage value: likely around $2.
+- Total cabbage value: likely around $200.
+- Customers to notify: Aang, Iroh, Katara, Vaatu, Wan Shi Tong, Zuko.
 
 
 #### check50
-
-I made a check50 for this part of our work with the cabbage merchant!
 
 Run this command in your terminal to check your answers:
 
