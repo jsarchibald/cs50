@@ -56,7 +56,7 @@ def count_works():
     db = SQL("sqlite:///cabbages.db")
     num = db.execute("SELECT COUNT(id) FROM cabbages WHERE batch_id=33")
 
-    if num not in res:
+    if num["COUNT(id)"] not in res:
         raise check50.Failure("COUNT query fails to count cabbages affected")
 
 
@@ -69,7 +69,7 @@ def average_works():
     db = SQL("sqlite:///cabbages.db")
     num = db.execute("SELECT AVG(value) FROM cabbages WHERE batch_id=33")
 
-    if num not in res:
+    if num["AVG(value)"] not in res:
         raise check50.Failure("AVG query fails to find average value of cabbages affected")
 
 
@@ -82,7 +82,7 @@ def sum_works():
     db = SQL("sqlite:///cabbages.db")
     num = db.execute("SELECT SUM(value) FROM cabbages WHERE batch_id=33")
 
-    if num not in res:
+    if num["SUM(value)"] not in res:
         raise check50.Failure("SUM query fails to find total value of cabbages affected")
 
 
