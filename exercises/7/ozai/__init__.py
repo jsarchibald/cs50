@@ -36,8 +36,9 @@ def update_works():
     ozai_id = db.execute("SELECT id FROM customers WHERE name=?", "Ozai")
 
     check50.run("sqlite3 cabbages.db < ozai.sql")
+    n = db.execute("SELECT COUNT(id) FROM invoices WHERE customer_id=?", ozai_id[0]["id"])
 
-    if db.execute("SELECT COUNT(id) FROM invoices WHERE customer_id=?", ozai_id[0]["id"]) > 0:
+    if n["COUNT(id)"] > 0:
         raise check50.Failure("UPDATE query fails to erase all references to Ozai in invoices")
 
 
@@ -46,6 +47,7 @@ def delete_works():
     """DELETE query erases Ozai from customers table"""
     
     db = SQL("sqlite:///cabbages.db")
-    if db.execute("SELECT COUNT(id) FROM customers WHERE name=?", "Ozai") > 0:
+    n = db.execute("SELECT COUNT(id) FROM customers WHERE name=?", "Ozai")
+    if n["COUNT(id)"] > 0:
         raise check50.Failure("DELETE query fails to erase Ozai from customers table")
  
