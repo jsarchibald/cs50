@@ -8,6 +8,7 @@ from cs50 import SQL
 def exists():
     """recall.sql exists"""
     check50.exists("recall.sql")
+    check50.include("cabbages.db")
 
 
 @check50.check(exists)

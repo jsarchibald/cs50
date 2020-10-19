@@ -7,6 +7,7 @@ from cs50 import SQL
 def exists():
     """ozai.sql exists"""
     check50.exists("ozai.sql")
+    check50.include("cabbages.db")
 
 
 @check50.check(exists)
