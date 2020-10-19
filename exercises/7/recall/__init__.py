@@ -52,12 +52,10 @@ def count_works():
     """COUNT query counts the affected cabbages"""
 
     res = check50.run("sqlite3 cabbages.db < recall.sql").stdout()
+    expected = check50.run('sqlite3 cabbages.db "SELECT COUNT(id) FROM cabbages WHERE batch_id=33;"').stdout()
 
-    db = SQL("sqlite:///cabbages.db")
-    num = db.execute("SELECT COUNT(id) FROM cabbages WHERE batch_id=33")
-
-    if num["COUNT(id)"] not in res:
-        raise check50.Failure("COUNT query fails to count cabbages affected")
+    if expected not in res:
+        raise check50.Mismatch(expected, res)
 
 
 @check50.check(exists)
@@ -65,12 +63,10 @@ def average_works():
     """AVG query averages value of the affected cabbages"""
 
     res = check50.run("sqlite3 cabbages.db < recall.sql").stdout()
+    expected = check50.run('sqlite3 cabbages.db "SELECT AVG(value) FROM cabbages WHERE batch_id=33;"').stdout()
 
-    db = SQL("sqlite:///cabbages.db")
-    num = db.execute("SELECT AVG(value) FROM cabbages WHERE batch_id=33")
-
-    if num["AVG(value)"] not in res:
-        raise check50.Failure("AVG query fails to find average value of cabbages affected")
+    if expected not in res:
+        raise check50.Mismatch(expected, res)
 
 
 @check50.check(exists)
@@ -78,24 +74,18 @@ def sum_works():
     """SUM query gets total value of the affected cabbages"""
 
     res = check50.run("sqlite3 cabbages.db < recall.sql").stdout()
+    expected = check50.run('sqlite3 cabbages.db "SELECT SUM(value) FROM cabbages WHERE batch_id=33;"').stdout()
 
-    db = SQL("sqlite:///cabbages.db")
-    num = db.execute("SELECT SUM(value) FROM cabbages WHERE batch_id=33")
-
-    if num["SUM(value)"] not in res:
-        raise check50.Failure("SUM query fails to find total value of cabbages affected")
+    if expected not in res:
+        raise check50.Mismatch(expected, res)
 
 
 @check50.check(exists)
-def sum_works():
-    """SUM query gets total value of the affected cabbages"""
+def names():
+    """gets names and emails of affected customers"""
 
     res = check50.run("sqlite3 cabbages.db < recall.sql").stdout()
+    expected = check50.run('sqlite3 cabbages.db "SELECT name, email FROM customers WHERE id IN (SELECT customer_id FROM invoices WHERE id IN (SELECT invoice_id FROM cabbages WHERE batch_id=33)) ORDER BY name;"').stdout()
 
-    db = SQL("sqlite:///cabbages.db")
-    customers = db.execute("SELECT name, email FROM customers WHERE id IN (SELECT customer_id FROM invoices WHERE id IN (SELECT invoice_id FROM cabbages WHERE batch_id=33)) ORDER BY name")
-
-    val = ".*".join([f"{row['name']} | {row['email']}" for row in customers])
-
-    if re.match(f".*{val}.*", res) is None:
-        raise check50.Failure("SUM query fails to find total value of cabbages affected")
+    if expected not in res:
+        raise check50.Mismatch(expected, res)
