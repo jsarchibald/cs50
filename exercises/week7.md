@@ -11,7 +11,7 @@ I feel reasonably comfortable saying that I'm not the only one here who watched 
 
 For those who haven't watched, there is a running gag in the show involving a cabbage merchant whose produce tends to be destroyed when in close proximity to the show's protagonists. Here is a clip from the cabbage man's first tragic appearance:
 
-https://youtu.be/GrobFjIRRCc
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GrobFjIRRCc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Today, we will be helping the cabbage man to organize his cabbages with a SQL database. Let's get started!
 
