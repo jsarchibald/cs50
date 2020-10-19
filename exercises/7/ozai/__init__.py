@@ -48,7 +48,7 @@ def update_works():
 def delete_works():
     """DELETE query erases Ozai from customers table"""
     
-    res = check50.run('sqlite3 cabbages.db "SELECT id FROM customers WHERE name=Ozai"').stdout()
+    res = check50.run('sqlite3 cabbages.db "SELECT id FROM customers WHERE name=\'Ozai\'"').stdout()
     
     if res != "":
         raise check50.Mismatch("", res)
