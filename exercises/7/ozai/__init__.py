@@ -48,6 +48,6 @@ def delete_works():
     
     db = SQL("sqlite:///cabbages.db")
     n = db.execute("SELECT COUNT(id) FROM customers WHERE name=?", "Ozai")
-    if n["COUNT(id)"] > 0:
+    if n[0]["COUNT(id)"] > 0:
         raise check50.Failure("DELETE query fails to erase Ozai from customers table")
  
