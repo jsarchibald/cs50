@@ -25,10 +25,10 @@ def cabbages_table():
     """cabbages table contains correct columns"""
 
     res = check50.run('sqlite3 cabbages.db ".schema cabbages"').stdout()
-    expected = "CREATE TABLE cabbages (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\ncabbage_type TEXT NOT NULL,\nbatch_id INTEGER NOT NULL,\n    invoice_id INTEGER NOT NULL,\n    value REAL NOT NULL\n);\n"
+    expected = "CREATE TABLE cabbages (\n    id INTEGER PRIMARY KEY,\ncabbage_type TEXT NOT NULL,\nbatch_id INTEGER NOT NULL,\n    invoice_id INTEGER NOT NULL,\n    value REAL NOT NULL\n);\n"
 
     passing = True
-    for item in ["id INTEGER PRIMARY KEY AUTOINCREMENT", "cabbage_type TEXT NOT NULL", "batch_id INTEGER NOT NULL", "invoice_id INTEGER NOT NULL", "value REAL NOT NULL"]:
+    for item in ["id INTEGER", "PRIMARY KEY", "cabbage_type TEXT NOT NULL", "batch_id INTEGER NOT NULL", "invoice_id INTEGER NOT NULL", "value REAL NOT NULL"]:
         if item not in res:
             passing = False
 
@@ -41,10 +41,10 @@ def customers_table():
     """customers table contains correct columns"""
 
     res = check50.run('sqlite3 cabbages.db ".schema customers"').stdout()
-    expected = "CREATE TABLE customers (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\n    name TEXT NOT NULL,\n    email TEXT NOT NULL\n);\n"
+    expected = "CREATE TABLE customers (\n    id INTEGER PRIMARY KEY,\n    name TEXT NOT NULL,\n    email TEXT NOT NULL\n);\n"
 
     passing = True
-    for item in ["id INTEGER PRIMARY KEY AUTOINCREMENT", "name TEXT NOT NULL", "email TEXT NOT NULL"]:
+    for item in ["id INTEGER", "PRIMARY KEY", "name TEXT NOT NULL", "email TEXT NOT NULL"]:
         if item not in res:
             passing = False
 
@@ -57,10 +57,10 @@ def invoices_table():
     """invoices table contains correct columns"""
 
     res = check50.run('sqlite3 cabbages.db ".schema invoices"').stdout()
-    expected = "CREATE TABLE invoices (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\n    customer_id INTEGER NOT NULL,\n    total_value REAL NOT NULL\n);\n"
+    expected = "CREATE TABLE invoices (\n    id INTEGER PRIMARY KEY,\n    customer_id INTEGER NOT NULL,\n    total_value REAL NOT NULL\n);\n"
 
     passing = True
-    for item in ["id INTEGER PRIMARY KEY AUTOINCREMENT", "customer_id INTEGER NOT NULL", "total_value REAL NOT NULL"]:
+    for item in ["id INTEGER", "PRIMARY KEY", "customer_id INTEGER NOT NULL", "total_value REAL NOT NULL"]:
         if item not in res:
             passing = False
 
