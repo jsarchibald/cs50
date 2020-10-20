@@ -50,7 +50,7 @@ def simulate():
     clear = ["invoices", "cabbages"]
     for table in clear:
         db.execute(f"DELETE FROM {table}")
-        db.execute(f"DELETE FROM sqlite_sequence WHERE name='{table}'")
+        #db.execute(f"DELETE FROM sqlite_sequence WHERE name='{table}'")
 
     print(f"cleared existing data from {', '.join(clear)}")
 
