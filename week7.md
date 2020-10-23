@@ -4,7 +4,7 @@
 
 [Exercises](exercises/week7.md)
 
-Exercise solutions - soon after section
+[Exercise solutions](https://vault.cs50.io/b9ffad7c-119e-401d-8b40-880288c8b69d)
 
 
 ## Extra resources
