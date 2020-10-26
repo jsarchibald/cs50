@@ -5,6 +5,10 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 
 
+PYTHON_DEADLINE = datetime(2020, 10, 21)
+HTML_DEADLINE = datetime(2020, 10, 28)
+
+
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -24,6 +28,14 @@ class Submission(db.Model):
     updated = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
 
+class HTMLSubmission(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(300), nullable=False)
+    html = db.Column(db.String(100000), nullable=False)
+    updated = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    ip = db.Column(db.String(255))
+
+
 # Error handling
 def error(message):
     response = jsonify({"message": str(message)})
@@ -31,7 +43,7 @@ def error(message):
     return response
 
 
-# Routes
+# Routes (Python week)
 @app.route("/")
 def index():
     submissions = Submission.query.order_by(Submission.id.desc()).all()
@@ -67,6 +79,9 @@ def delete():
 
 @app.route("/submit", methods=["POST"])
 def submit():
+    if datetime.now() > PYTHON_DEADLINE:
+        return error("Past expiration date for Python submissions")
+
     fields = ["name", "year", "feeling", "url", "script"]
     for field in fields:
         if request.form[field] is None:
@@ -84,4 +99,59 @@ def submit():
         return "good job :)"
     except:
         return error("Something went wrong :(")
+
+
+# Routes (HTML/CSS/JS week)
+@app.route("/html")
+def html_index():
+    submissions = HTMLSubmission.query.order_by(Submission.id.desc()).all()
+
+    return render_template("html/index.html", submissions=submissions)
+
+
+@app.route("/html/<sid>")
+def html_code(sid):
+    try:
+        submission = HTMLSubmission.query.filter_by(id=int(sid)).first()
+        return submission.html
+    except:
+        return error("Couldn't open that submission.")
+
+
+@app.route("/html/delete", methods=["POST"])
+def html_delete():
+    if request.form["id"] is None:
+        return error("Must provide an ID to delete a submission")
+
+    try:
+        submission = HTMLSubmission.query.filter_by(id=int(request.form["id"])).first()
+        db.session.delete(submission)
+        db.session.commit()
+
+        return "deleted, good job :)"
+    except:
+        return error("Something went wrong :(")
+
+
+@app.route("/html/submit", methods=["POST"])
+def html_submit():
+    if datetime.now() > HTML_DEADLINE:
+        return error("Past expiration date for Python submissions")
+
+    fields = ["title", "html"]
+    for field in fields:
+        if request.form[field] is None:
+            return error("Must provide data for all fields: {}".format(", ".join(fields)))
+    
+    try:
+        submission = HTMLSubmission(title=request.form["title"],
+                                    html=request.form["html"],
+                                    ip=request.remote_addr)
+        db.session.add(submission)
+        db.session.commit()
+
+        return "good job :)"
+    except:
+        return error("Something went wrong :(")
+
 

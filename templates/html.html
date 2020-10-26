@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Josh&rsquo;s section learns HTML, CSS, and JavaScript</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container-fluid py-4 px-5">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">
+                        Josh&rsquo;s section learns HTML, CSS, and JavaScript!
+                    </h1>
+                    <p class="text-center"><a href="https://github.com/jsarchibald/cs50/blob/2020/fall/exercises/week8.md">Click here</a> for instructions.</p>
+                    <p class="text-center">Students submitted these webpages:</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                {% if submissions|length < 1: %}
+                    <p>No submissions yet!</p>
+
+                {% else: %}
+                    <table class="table">
+                    {% for submission in submissions: %}
+                        <tr>
+                            <td>#{{ submission["id"] }}</td>
+                            <td><a href="/html/{{ submission['id'] }}">{{ submission["title"] }}</a></td>
+                            <td><em>Last updated:</em> {{ submission["updated"] }}</td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+        <script>
+            setTimeout(() => {
+                window.location = "";
+            }, 5000);
+        </script>
+    </body>
+</html>
