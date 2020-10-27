@@ -6,7 +6,7 @@ import sys
 
 
 # The URL Of the submission site
-BASE_URL = "https://j50.herokuapp.com/html"
+BASE_URL = "https://j50.herokuapp.com"
 
 
 def submit(data):
@@ -21,7 +21,8 @@ def submit(data):
 
     print("Ok, contacting server...")
 
-    r = requests.post(url.urljoin(BASE_URL, "/submit"), data=data)
+    r = requests.post(url.urljoin(BASE_URL, "/html/submit"), data=data)
+    print(r.url)
 
     return r.status_code
 
@@ -38,7 +39,7 @@ def delete(data):
 
     print("Ok, contacting server...")
 
-    r = requests.post(url.urljoin(BASE_URL, "/delete"), data=data)
+    r = requests.post(url.urljoin(BASE_URL, "/html/delete"), data=data)
 
     return r.status_code
 
