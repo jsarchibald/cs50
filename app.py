@@ -136,7 +136,7 @@ def html_delete():
 @app.route("/html/submit", methods=["POST"])
 def html_submit():
     if datetime.now() > HTML_DEADLINE:
-        return error("Past expiration date for Python submissions")
+        return error("Past expiration date for HTML submissions")
 
     fields = ["title", "html"]
     for field in fields:
@@ -153,5 +153,3 @@ def html_submit():
         return "good job :)"
     except:
         return error("Something went wrong :(")
-
-
