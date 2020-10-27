@@ -106,7 +106,7 @@ def submit():
 def html_index():
     submissions = HTMLSubmission.query.order_by(HTMLSubmission.id.desc()).all()
 
-    return render_template("html/index.html", submissions=submissions)
+    return render_template("html.html", submissions=submissions)
 
 
 @app.route("/html/<sid>")
