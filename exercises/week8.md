@@ -27,7 +27,7 @@ To start our HTML page it's useful to copy the following:
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Magic 8 ball</title>
+        <title>Magic 8 Ball</title>
     </head>
     <body>
 
@@ -39,9 +39,11 @@ To start our HTML page it's useful to copy the following:
 
 Let's unpack this a little bit. The first line specifies that the file we're writing is indeed an HTML5 document. After that, we open up our HTML file with the `<html>` tag, wherein we also specify the page's language as being `en` -- generalized English. (For more specificity, we could've said `en-us`, for example.)
 
-Inside the `<html>` tag there are only two structures: `<head>`, which specifies the metadata for the document, and `<body>`, which specifies the content that should be shown to the user. Everything in our HTML file should go inside either `<head>` or `<body>`.
+Inside the `<html>` tag there are only two structures: `<head>`, which specifies the metadata for the document, and `<body>`, which basically specifies the content that should be shown to the user. Everything in our HTML file should go inside either `<head>` or `<body>`.
 
-Inside our `<head>` we first specify the `charset`, or character set, that our page uses -- `utf-8` is standard nowadays. An alternative charset is `ascii`, which you dealt with a lot in C! We also specify the `<title>` of the page which appears as the name of the tab in your browser (it's also used by Google when indexing webpages).
+Inside our `<head>` we first specify the `charset`, or character set, that our page uses -- `utf-8` is standard nowadays. An alternative charset is `ascii`, which you dealt with a lot in C! (See [this page](https://www.w3.org/International/questions/qa-what-is-encoding) for more about why we care about character sets.)
+
+We also specify the `<title>` of the page which appears as the name of the tab in your browser (it's also used by Google when indexing webpages).
 
 Inside our `<body>` tag we have...nothing, because we're going to add stuff there momentarily!
 
@@ -58,9 +60,9 @@ How can we then include our stylesheet in `index.html`? By adding this line to t
 
 #### What this is
 
-This tells the browser to load up the file at `main.css`, which is of type `stylesheet`.
+This tells the browser to load up the file at `main.css`, which is of type `stylesheet`, indicating that this file should be used to change how our HTML elements look.
 
-Recall that there are other ways to style your HTML elements -- you could create a `<style>` element within your head and just write the styles there, for example. Or you could add the attribute `style="..."` to most HTML elements. Those are both possible! But not good practice. You should really only do that when you're making a really quick prototype. For any large project, such ad-hoc styling gets disorganized very quickly, and if you want to reuse styles between HTML files, you'll end up copy-pasting, which is plainly disgusting. So use separate `.css` files and `<link>` whenever possible, as a general rule.
+Recall that there are other ways to style your HTML elements -- you could create a `<style>` element within your head and just write the styles there, for example. Or you could add the attribute `style="..."` to most HTML elements. Those are both possible! But generally not good practice. You should really only do that when you're making a really quick prototype. For any large project, such ad-hoc styling gets disorganized very quickly, and if you want to reuse styles between HTML files, you'll end up copy-pasting, which is kinda gross. Plus, when you use separate `.css` files, browsers may be able to *cache* each stylesheet, meaning they don't reload the file every time the page is reloaded. So use separate `.css` files and `<link>` whenever possible, *as a general rule*.
 
 
 ### 3. Create `main.js`.
@@ -90,9 +92,9 @@ So, here's what I'm thinking, structure-wise:
 
 It would also be useful to use some classes and IDs to help with the CSS and JavaScript manipulation of this project. Maybe `.ball`, `.blue-center`, `#prediction`?
 
-- *Wait, what? Dots and hashtags, I'm lost.* The dots (e.g., `.ball`) indicate classes -- there can be multiple elements in an HTML document with the same class. The hashtags (e.g., `#prediction`) indicate IDs -- there can only be one element with a particular ID in an HTML document. IDs are unique.
+- *Wait, what? Dots and hashtags, I'm lost.* The dots (e.g., `.ball`) indicate [classes](https://www.w3schools.com/html/html_classes.asp) -- there can be multiple elements in an HTML document with the same class. The hashtags (e.g., `#prediction`) indicate [IDs](https://www.w3schools.com/html/html_id.asp) -- there can only be one element with a particular ID in an HTML document. IDs are unique.
 
-Here's a question you might be asking: why use classes vs. IDs in this case? Like, if we wanted multiple Magic 8 Balls on this page, we'd want `prediction` to be a class, *not* an ID (because there would be multiple in the document). If there's only one, we'd maybe want `ball` and `blue-center` to be IDs. The reason in this case is an arbitrary design decision on my part: maybe I want to reuse the styling from `.ball` and `.blue-center`, so those should be classes. For `#prediction`, I'm just using it to make my JavaScript a little simpler, so a unique ID is just fine. (I also wanted to show how to access by both class and ID in JavaScript, so there's a pedagogical reason at hand as well.)
+Here's a question you might be asking: why use classes vs. IDs in this case? Like, if we wanted multiple Magic 8 Balls on this page, we'd want `prediction` to be a class, *not* an ID (because there would be multiple in the document). If there's only one, we'd maybe want `ball` and `blue-center` to be IDs. The reason in this case is an arbitrary design decision on my part: maybe I want to reuse the styling from `.ball` and `.blue-center`, so those should be classes. For `#prediction`, I'm just using it to make my JavaScript a little simpler, so a unique ID is just fine. (I also wanted to show how to access elements by both class and ID in JavaScript, so there's a pedagogical reason at hand as well.)
 
 
 **Take a second to think about how you'd write this code.**
@@ -114,7 +116,7 @@ I've now replicated the structure I mentioned above (but in code) and have the a
 
 For the purposes of this problem, we're going to assume we don't care how this page looks on a smartphone. We're going to assume setting widths and heights by pixel were still acceptable practice in 2020, even though it's not. We're going to assume our users are using browsers that are okay with CSS calculations and transforms. We're going to assume our users have access to the Arial or Helvetica font. We're making a lot of assumptions here, because that's what we have to do to keep the problem relatively simple.
 
-For the ball itself, we're going to set the `position` to be `absolute`, so it stays in place on the page. The background should be some dark gray, maybe `#111111` (or `#111` for short). And let's say we want it to have a radius of 300 pixels -- that means we should set the `width` and `height` to be `600px` each and have a `border-radius` of `300px` (300 pixel rounding in each corner) to make a circle like that. In summary:
+For the ball itself, we're going to set the `position` to be `absolute`, so it stays in place on the page. The background should be some dark gray, maybe `#111111` (or `#111` for short). And let's say we want it to have a radius of 300 pixels -- that means we should set the `width` and `height` to be `600px` each and have a `border-radius` of `300px` (300-pixel rounded corners) to make a circle like that. In summary:
 
 ```css
 .ball {
@@ -126,7 +128,11 @@ For the ball itself, we're going to set the `position` to be `absolute`, so it s
 }
 ```
 
-For the blue center, let's simplify and say it'll be 150 by 150 pixels. To center it within the ball vertically, we'll set its margin from the top `margin-top` to be 50% of the ball's height, minus half the blue thing's height as an adjustment -- in CSS, that's `calc(50% - 75px)`. (If we did a margin of just 50% of the ball's height, then the blue thing would have its top edge at that point and wouldn't be quite centered.) We do the same for `margin-left` to make the blue thing horizontally centered. We want the blue thing to have a blue background, obviously, so we pick out a blue from [a site like this](https://www.webfx.com/web-design/color-picker) and plug in the hexadecimal color representation into our `background` property.
+For the blue center, let's simplify and say it'll be 150 by 150 pixels. To center it within the ball vertically, we'll set its margin from the top `margin-top` to be 50% of the ball's height, minus half the blue thing's height as an adjustment -- in CSS, that's `calc(50% - 75px)`.
+
+- If we did a margin of just 50% of the ball's height, then the blue thing would have its top edge at that point and wouldn't be quite centered.
+
+We do the same for `margin-left` to make the blue thing horizontally centered. We want the blue thing to have a blue background, obviously, so we pick out a blue from [a site like this](https://www.webfx.com/web-design/color-picker) and plug in the hexadecimal color representation into our `background` property.
 
 ```css
 .blue-center {
@@ -264,7 +270,7 @@ let phrases = [
 
 The DOM and JavaScript allow us to save individual HTML element objects in variables. (Those objects are retrieved using [`document.getElementById`](https://www.w3schools.com/jsref/met_document_getelementbyid.asp), [`document.getElementsByClassName`](https://www.w3schools.com/jsref/met_document_getelementsbyclassname.asp), or other document methods.)
 
-Let's store the `.ball` element and `#prediction` element into variables.
+Let's store the `.ball` and `#prediction` elements in variables.
 
 This should look something like:
 
@@ -307,6 +313,17 @@ document.addEventListener("DOMContentLoaded", predict); // when the page is done
 And now we have a Magic 8 Ball!
 
 
+### Testing
+
+To test out your Magic 8 Ball in the browser, navigate in the CS50 IDE terminal to the directory where `index.html` and friends reside. Then run the following command:
+
+```
+http-server
+```
+
+You'll see a link appear in your terminal: click it to navigate to the file listing of this directory. Then click `index.html` to view your Magic 8 Ball. Click on the ball to get a new prediction.
+
+
 ## Profile page
 
 Remember [that exercise](week6.md#hello-section) where you wrote some code to upload some information to a site? Today we expand upon [J50](https://j50.herokuapp.com/html) by uploading HTML profile pages to it.
@@ -316,7 +333,7 @@ Remember [that exercise](week6.md#hello-section) where you wrote some code to up
 
 Create an HTML page about yourself (or a character you really like). You can include images, text, links, anything really -- keep it appropriate for Harvard and please don't add dangerous JavaScript, but other than that, the idea here is to get practice with HTML and CSS so you feel ready to go on to the pset.
 
-Only real limitation is that you should keep your code contained within a single HTML file, which means you'll want to write all your CSS within a `<style>` element inside the `<head>` of your document.
+Only real limitation is that you should keep your code contained within a single HTML file, which means you'll want to write all your CSS within a `<style>` element inside the `<head>` of your document. Or, you can just use [Bootstrap](https://getbootstrap.com/docs/4.5/getting-started/introduction) which will help you get started quite rapidly.
 
 ### Uploading your code
 
