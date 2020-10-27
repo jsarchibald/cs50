@@ -7,6 +7,8 @@ Exercises can be completed using the CS50 IDE.
 
 ## Magic 8 Ball
 
+[![Magic 8 Ball in Toy Story](https://img.youtube.com/vi/mFOracFClBg/0.jpg)](https://www.youtube.com/watch?v=mFOracFClBg)
+
 Life is filled with uncertainty, which is why we take probability courses like STAT 110. Another way to cope with uncertainty, however, is to trust in a magic ball filled with some blue goo substance that will indicate...something. The signal is pretty noisy; it can be hard to figure out what the ball means. But it's magical!
 
 Today, we shall make a Magic 8 Ball.
@@ -37,13 +39,13 @@ To start our HTML page it's useful to copy the following:
 
 #### What this is
 
-Let's unpack this a little bit. The first line specifies that the file we're writing is indeed an HTML5 document. After that, we open up our HTML file with the `<html>` tag, wherein we also specify the page's language as being `en` -- generalized English. (For more specificity, we could've said `en-us`, for example.)
+Let's unpack this a little bit. The first line specifies that the file we're writing is indeed an HTML5 document. After that, we open up our HTML file with the [`<html>`](https://www.w3schools.com/tags/tag_html.asp) tag, wherein we also specify the page's language as being `en` -- generalized English. (For more specificity, we could've said `en-us`, for example.)
 
-Inside the `<html>` tag there are only two structures: `<head>`, which specifies the metadata for the document, and `<body>`, which basically specifies the content that should be shown to the user. Everything in our HTML file should go inside either `<head>` or `<body>`.
+Inside the `<html>` tag there are only two structures: [`<head>`](https://www.w3schools.com/tags/tag_head.asp), which specifies the metadata for the document, and [`<body>`](https://www.w3schools.com/tags/tag_body.asp), which basically specifies the content that should be shown to the user. Everything in our HTML file should go inside either `<head>` or `<body>`.
 
 Inside our `<head>` we first specify the `charset`, or character set, that our page uses -- `utf-8` is standard nowadays. An alternative charset is `ascii`, which you dealt with a lot in C! (See [this page](https://www.w3.org/International/questions/qa-what-is-encoding) for more about why we care about character sets.)
 
-We also specify the `<title>` of the page which appears as the name of the tab in your browser (it's also used by Google when indexing webpages).
+We also specify the [`<title>`](https://www.w3schools.com/tags/tag_title.asp) of the page which appears as the name of the tab in your browser (it's also used by Google when indexing webpages).
 
 Inside our `<body>` tag we have...nothing, because we're going to add stuff there momentarily!
 
@@ -62,7 +64,7 @@ How can we then include our stylesheet in `index.html`? By adding this line to t
 
 This tells the browser to load up the file at `main.css`, which is of type `stylesheet`, indicating that this file should be used to change how our HTML elements look.
 
-Recall that there are other ways to style your HTML elements -- you could create a `<style>` element within your head and just write the styles there, for example. Or you could add the attribute `style="..."` to most HTML elements. Those are both possible! But generally not good practice. You should really only do that when you're making a really quick prototype. For any large project, such ad-hoc styling gets disorganized very quickly, and if you want to reuse styles between HTML files, you'll end up copy-pasting, which is kinda gross. Plus, when you use separate `.css` files, browsers may be able to *cache* each stylesheet, meaning they don't reload the file every time the page is reloaded. So use separate `.css` files and `<link>` whenever possible, *as a general rule*.
+Recall that there are other ways to style your HTML elements -- you could create a [`<style>`](https://www.w3schools.com/tags/tag_style.asp) element within your head and just write the styles there, for example. Or you could add the attribute `style="..."` to most HTML elements. Those are both possible! But generally not good practice. You should really only do that when you're making a really quick prototype. For any large project, such ad-hoc styling gets disorganized very quickly, and if you want to reuse styles between HTML files, you'll end up copy-pasting, which is kinda gross. Plus, when you use separate `.css` files, browsers may be able to *cache* each stylesheet, meaning they don't reload the file every time the page is reloaded. So use separate `.css` files and `<link>` whenever possible, *as a general rule*.
 
 
 ### 3. Create `main.js`.
@@ -75,7 +77,7 @@ To execute logic on our webpage, we'll need JavaScript. Create a blank file call
 
 #### What this is
 
-Why at the end of the `<body>` tag? You can put a `<script>` tag in the `<head>` or anywhere in the `<body>`, but I learned to put it at the end of `<body>` so as to slightly improve page display speed (see [here](https://www.w3schools.com/js/js_whereto.asp)). Admittedly, I learned HTML/CSS/JS a *very* long time ago, so there are modern alternatives that may allow you to avoid such display slowdowns but still put the `<script>` tag in the head, specifically by writing `<script async>` which [basically](https://www.w3schools.com/tags/att_script_async.asp) tells the browser to start loading the JS but don't wait for it to be done before you render the rest of the page. For simplicity, though, I still put my `<script>`s at the bottom of the `<body>` tag.
+Why at the end of the `<body>` tag? You can put a [`<script>`](https://www.w3schools.com/tags/tag_script.asp) tag in the `<head>` or anywhere in the `<body>`, but I learned to put it at the end of `<body>` so as to slightly improve page display speed (see [here](https://www.w3schools.com/js/js_whereto.asp)). Admittedly, I learned HTML/CSS/JS a *very* long time ago, so there are modern alternatives that may allow you to avoid such display slowdowns but still put the `<script>` tag in the head, specifically by writing `<script async>` which [basically](https://www.w3schools.com/tags/att_script_async.asp) tells the browser to start loading the JS but don't wait for it to be done before you render the rest of the page. For simplicity, though, I still put my `<script>`s at the bottom of the `<body>` tag.
 
 Why a separate file for the JavaScript? Same reasons as CSS re: reusability, separation of types of code, general organization, and browser optimizations related to caching mechanisms.
 
@@ -116,7 +118,7 @@ I've now replicated the structure I mentioned above (but in code) and have the a
 
 For the purposes of this problem, we're going to assume we don't care how this page looks on a smartphone. We're going to assume setting widths and heights by pixel were still acceptable practice in 2020, even though it's not. We're going to assume our users are using browsers that are okay with CSS calculations and transforms. We're going to assume our users have access to the Arial or Helvetica font. We're making a lot of assumptions here, because that's what we have to do to keep the problem relatively simple.
 
-For the ball itself, we're going to set the `position` to be `absolute`, so it stays in place on the page. The background should be some dark gray, maybe `#111111` (or `#111` for short). And let's say we want it to have a radius of 300 pixels -- that means we should set the `width` and `height` to be `600px` each and have a `border-radius` of `300px` (300-pixel rounded corners) to make a circle like that. In summary:
+For the ball itself, we're going to set the [`position`](https://www.w3schools.com/cssref/pr_class_position.asp) to be `absolute`, so it stays in place on the page. The [`background`](https://www.w3schools.com/cssref/css3_pr_background.asp) should be some dark gray, maybe `#111111` (or `#111` for short). And let's say we want it to have a radius of 300 pixels -- that means we should set the [`width`](https://www.w3schools.com/cssref/pr_dim_width.asp) and [`height`](https://www.w3schools.com/cssref/pr_dim_height.asp) to be `600px` each and have a [`border-radius`](https://www.w3schools.com/cssref/css3_pr_border-radius.asp) of `300px` (300-pixel rounded corners) to make a circle like that. In summary:
 
 ```css
 .ball {
@@ -128,11 +130,11 @@ For the ball itself, we're going to set the `position` to be `absolute`, so it s
 }
 ```
 
-For the blue center, let's simplify and say it'll be 150 by 150 pixels. To center it within the ball vertically, we'll set its margin from the top `margin-top` to be 50% of the ball's height, minus half the blue thing's height as an adjustment -- in CSS, that's `calc(50% - 75px)`.
+For the blue center, let's simplify and say it'll be 150 by 150 pixels. To center it within the ball vertically, we'll set its margin from the top [`margin-top`](https://www.w3schools.com/cssref/pr_margin-top.asp) to be 50% of the ball's height, minus half the blue thing's height as an adjustment -- in CSS, that's [`calc(50% - 75px)`](https://www.w3schools.com/cssref/func_calc.asp).
 
 - If we did a margin of just 50% of the ball's height, then the blue thing would have its top edge at that point and wouldn't be quite centered.
 
-We do the same for `margin-left` to make the blue thing horizontally centered. We want the blue thing to have a blue background, obviously, so we pick out a blue from [a site like this](https://www.webfx.com/web-design/color-picker) and plug in the hexadecimal color representation into our `background` property.
+We do the same for [`margin-left`](https://www.w3schools.com/cssref/pr_margin-left.asp) to make the blue thing horizontally centered. We want the blue thing to have a blue background, obviously, so we pick out a blue from [a site like this](https://www.webfx.com/web-design/color-picker) and plug in the hexadecimal color representation into our `background` property.
 
 ```css
 .blue-center {
@@ -144,7 +146,7 @@ We do the same for `margin-left` to make the blue thing horizontally centered. W
 }
 ```
 
-Now we work on the `#prediction` div. We want the text to appear in `Arial` or `Helvetica` font, so we add the `font-family` property you see below. (Note that these fonts are searched in order -- the browser will check for `Arial` first and use it if the user has that font; if not, it'll check for `Helvetica`, etc.) We also want it to be white, so we set `color` to be `#ffffff`, or `#fff` for short.
+Now we work on the `#prediction` div. We want the text to appear in `Arial` or `Helvetica` font, so we add the [`font-family`](https://www.w3schools.com/cssref/pr_font_font-family.asp) property you see below. (Note that these fonts are searched in order -- the browser will check for `Arial` first and use it if the user has that font; if not, it'll check for `Helvetica`, etc.) We also want it to be white, so we set [`color`](https://www.w3schools.com/cssref/pr_text_color.asp) to be `#ffffff`, or `#fff` for short.
 
 ```css
 #prediction {
@@ -165,7 +167,7 @@ Now we just need to make the prediction centered horizontally and vertically wit
 }
 ```
 
-To make a horizontal alignment, I just do the same thing with `left` and change that `0` in `translate` to similarly be a `-50%`:
+To make a horizontal alignment, I just do the same thing with [`left`](https://www.w3schools.com/cssref/pr_pos_left.asp) and change that `0` in [`translate`](https://www.w3schools.com/cssref/css3_pr_transform.asp) to similarly be a `-50%`:
 
 ```css
 #prediction {
@@ -197,7 +199,7 @@ So `.blue-center` now looks like:
 }
 ```
 
-As a finishing touch, I want the ball to make my mouse look like I'm about to click on it, so I add `cursor: pointer;` to `.ball`. I also want it to fade from dark gray to a lighter gray when I hover, so I add `transition: all .5s;` to `.ball` and then add a new styling for `.ball:hover`. In all, our stylesheet should look like this now:
+As a finishing touch, I want the ball to make my mouse look like I'm about to click on it, so I add [`cursor: pointer;`](https://www.w3schools.com/cssref/pr_class_cursor.asp) to `.ball`. I also want it to fade from dark gray to a lighter gray when I hover, so I add [`transition: all .5s;`](https://www.w3schools.com/cssref/css3_pr_transition.asp) to `.ball` and then add a new styling for [`.ball:hover`](https://www.w3schools.com/cssref/sel_hover.asp). In all, our stylesheet should look like this now:
 
 ```css
 .ball {
@@ -282,7 +284,7 @@ let prediction_text = document.getElementById("prediction");
 
 #### c. Write a function to choose and display a prediction.
 
-Let's write a `function predict()` that will randomly choose a phrase from our array of phrases, and change the `innerText` of `div#prediction` to be that phrase. The W3Schools page on [`Math.random`](https://www.w3schools.com/js/js_random.asp) may be useful. And recall that you can get the size of an array with `array_name.length`.
+Let's write a `function predict()` that will randomly choose a phrase from our array of phrases, and change the `innerText` of `div#prediction` to be that phrase. The W3Schools page on [`Math.random`](https://www.w3schools.com/js/js_random.asp) may be useful. And recall that you can get the size of an array with [`array_name.length`](https://www.w3schools.com/js/js_arrays.asp).
 
 Ultimately your function should look something like this:
 

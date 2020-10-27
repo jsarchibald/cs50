@@ -22,7 +22,6 @@ def submit(data):
     print("Ok, contacting server...")
 
     r = requests.post(url.urljoin(BASE_URL, "/html/submit"), data=data)
-    print(r.url)
 
     return r.status_code
 
