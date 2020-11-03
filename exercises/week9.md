@@ -39,7 +39,7 @@ CREATE TABLE flights (
     origin TEXT NOT NULL, /* origin airport code */
     destination TEXT NOT NULL, /* destination airport code */
     status TEXT NOT NULL, /* current flight status */
-    departure INT NOT NULL /* departure time, as a Unix timestamp */
+    departure INTEGER NOT NULL /* departure time, as a Unix timestamp */
 );
 ```
 
@@ -61,7 +61,7 @@ Your first `TODO` says:
 # TODO: return the index.html template, passing in AIRPORTS and flights
 ```
 
-We should modify the following line to use `render_template`, which should use `index.html` and pass in `airports=AIRPORTS, flights=flights`. The former, `AIRPORTS`, is a dictionary mapping airport codes (e.g., `BOS`) to city naems (e.g., `Boston`). The latter is, of course, the flights we just selected from the database.
+We should modify the following line to use [`render_template`](https://flask.palletsprojects.com/en/1.1.x/api/#flask.render_template), which should use `index.html` and pass in `airports=AIRPORTS, flights=flights`. The former, `AIRPORTS`, is a dictionary mapping airport codes (e.g., `BOS`) to city names (e.g., `Boston`). The latter is, of course, the list of flights we just selected from the database.
 
 #### `templates/index.html`
 
@@ -85,11 +85,17 @@ Also recall that you can use variables in your HTML template like this:
 
 It may be helpful to think of how, in HTML, you would represent just one row of the table. Hard-code a row with some data. Then, imagine that you have a dictionary with all the fields you need to fill in -- `flight["origin"]`, `flight["destination"]`, `flight["departure"]`, `flight["status"]`, `flight["id"]` -- and plug those into your table row. Finally, make a loop through the `flights` list to go through those individual row dictionaries.
 
+I said I would return to the note about `/update/<flight_id>` links. Basically your last column in each row should be a link to `/update/<flight_id>` where flight ID is actually accessed via `flight["id"]`. It could look something like this:
+
+```html
+<a href="/update/{{ flight['id'] }}">update</a>
+```
+
 #### Tweaks
 
 Your `index.html` may be functional at this point, but a little user-unfriendly. For one thing, the departure time is some integer that no human could ever hope to understand. To fix that, use a Jinja filter I created for you called `to_timestamp`.
 
-For another thing, it may be nice to make flight status all-caps. Use the `upper` Jinja filter to do that.
+For another thing, it may be nice to make flight status all-caps. Use the [`upper`](https://jinja.palletsprojects.com/en/2.11.x/templates/#upper) Jinja filter to do that.
 
 Finally, not everyone knows Canadian airport codes, so it would be helpful to print out the city name as well. Recall that we passed in a variable `airports`, a dictionary mapping airport codes to city names. You can thus get the city of an airport code by writing `airports[flight["origin"]]` or `airports[flight["destination"]]`.
 
@@ -125,7 +131,7 @@ The following `TODO` tells us:
 
 Recall that `AIRPORTS` is a dictionary mapping airport codes to city names. If a certain value is in `AIRPORTS`, that means it's one of the keys of the `AIRPORTS` dictionary. We want both the `form["origin"]` and `form["destination"]` to be *in* `AIRPORTS` (since the keys are airport codes, and so are the origin and destination values sent through the form). They should also not be the same -- a flight from Boston to Boston is pretty useless. If any of these conditions aren't met, you should return an error message.
 
-Our final `TODO` is to redirect the user to the homepage. If we use the `redirect` function, we can do this like this:
+Our final `TODO` is to redirect the user to the homepage. If we use the [`redirect`](https://flask.palletsprojects.com/en/1.1.x/api/#flask.redirect) function, we can do this like this:
 
 ```python
 return redirect("/")
@@ -200,7 +206,7 @@ This page can be accessed at `/update/3` or `update/5`, for example. That number
 
 Here we get the flight info from the database -- if the flight doesn't exist, we alert the user to that fact. Otherwise we store the first flight we find in a variable called `flight`.
 
-Your first `TODO` is to use `render_template` to display `update.html`, making sure to pass in `airports=AIRPORTS, flight=flight`. This way the `AIRPORTS` variable can be used in Jinja as `airports`, and `flight` as `flight`.
+Your first `TODO` is to use [`render_template`](https://flask.palletsprojects.com/en/1.1.x/api/#flask.render_template) to display `update.html`, making sure to pass in `airports=AIRPORTS, flight=flight`. This way the `AIRPORTS` variable can be used in Jinja as `airports`, and `flight` as `flight`.
 
 Now we continue:
 
@@ -213,9 +219,9 @@ Now we continue:
         return "TODO"
 ```
 
-For the first `TODO` here, we will be using `request.form.get("status")` to get the value of the `status` field of the submission. If that value `is not None` then we should run an `UPDATE` SQL command to change the flight with ID `flight_id` to have status `request.form.get("status")`.
+For the first `TODO` here, we will be using `request.form.get("status")` to get the value of the `status` field of the submission. If that value `is not None` then we should execute an `UPDATE` SQL command to change the flight with ID `flight_id` to have status `request.form.get("status")`.
 
-For the latter `TODO`, we have to redirect the user to the homepage. If we use the `redirect` function, we can do this like this:
+For the latter `TODO`, we have to redirect the user to the homepage. If we use the [`redirect`](https://flask.palletsprojects.com/en/1.1.x/api/#flask.redirect) function, we can do this like this:
 
 ```python
 return redirect("/")
@@ -226,3 +232,11 @@ return redirect("/")
 
 Recall from working in `application.py` that we pass to the Jinja template a variable called `flight`, a dictionary of one row from the `flights` table in the database. Our only `TODO` in `templates/update.html` is to create a table row summarizing all the information available about that flight. The form itself is handled for us. Recall that the flight will have an `origin`, a `destination`, a `departure` (which should probably be run through the `to_timestamp` filter I created), and a `status`.
 
+And we're done!
+
+
+### Submitting your group's work
+
+In the CS50 IDE, in the file browser to the left, right click the folder called `flights`. Click `Download`. Save this ZIP file somewhere on your computer.
+
+Then, visit [this form](https://bit.ly/3jTAwRY) and submit your ZIP file, making sure to note on the form which part of this exercise you completed.
