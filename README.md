@@ -32,3 +32,5 @@ I wrote up a sheet with some guiding questions and general advice for code desig
 [Week 7](week7.md)
 
 [Week 8](week8.md)
+
+[Week 9](week9.md)
