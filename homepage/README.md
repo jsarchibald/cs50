@@ -10,6 +10,8 @@ To build:
 docker build -t homepage .
 ```
 
+Then, go to `Docker Settings / Resources / File Sharing` and add the folder in which you're going to save students' submission ZIP files.
+
 To run:
 
 1. Download the ZIPs of all your students' submissions into one folder.
