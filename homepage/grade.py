@@ -46,6 +46,14 @@ def check_script(c, tempdir):
                 if content.strip() != "":
                     return True
         except:
+            pass
+
+        try:
+            with open(Path(tempdir) / p) as f:
+                content = f.read()
+                if content.strip() != "":
+                    return True
+        except:
             return False
 
 
@@ -68,6 +76,7 @@ def get_bootstrap_classes():
 def grade(f, bootstrap_classes):
     """Grade an individual submission"""
     z = ZipFile(f)
+    print(str(f))
 
     requirements = {
         "index.html": False,
@@ -87,15 +96,15 @@ def grade(f, bootstrap_classes):
     js = list()
 
     for item in z.namelist():
-        if re.match(".*\.html$", item):
+        if re.match(".*\.html$", item) and "__MACOSX/" not in item:
             html.append(item)
             requirements["index.html"] = requirements["index.html"] or (re.match(".*index\.html$", item) is not None)
 
-        elif re.match(".*\.css$", item):
+        elif re.match(".*\.css$", item) and "__MACOSX/" not in item:
             css.append(item)
             requirements["stylesheet"] = True
 
-        elif re.match(".*\.js$", item):
+        elif re.match(".*\.js$", item) and "__MACOSX/" not in item:
             js.append(item)
 
     requirements["page_count"] = len(html)
@@ -103,11 +112,18 @@ def grade(f, bootstrap_classes):
     with tempfile.TemporaryDirectory() as tempdir:
         # Extract
         z.extractall(tempdir)
+        td = Path(tempdir)
+
+        # Mac fix
+        if "__MACOSX/" in z.namelist():
+            sub_id = str(f).split(".")[0].replace("/mounted/", "")
+            td = td / sub_id 
+
         html_paths = [Path(tempdir) / h for h in html]
         css_paths = [Path(tempdir) / h for h in css]
 
         # Get student info
-        with open(Path(tempdir) / "metadata.yml") as f:
+        with open(td / "metadata.yml") as f:
             lines = f.readlines()
             data = yaml.load(bytes("\n".join(lines[0:5]), encoding="utf8"), Loader=yaml.Loader)
             requirements["submission_id"] = data[":id"]
@@ -128,6 +144,7 @@ def grade(f, bootstrap_classes):
 
         # HTML files
         for h in html_paths:
+            print(h)
             with open(h) as f:
                 soup = BeautifulSoup(f, 'html.parser')
                 for c in soup.descendants:
@@ -136,7 +153,7 @@ def grade(f, bootstrap_classes):
 
                     # JavaScript
                     if c.name == "script":
-                        requirements["nonempty_script"] = requirements["nonempty_script"] or check_script(c, tempdir)
+                        requirements["nonempty_script"] = requirements["nonempty_script"] or check_script(c, td)
 
                     # Bootstrap classes
                     try:
@@ -207,6 +224,10 @@ def main():
         grades.append(grade(f, bootstrap_classes))
 
     compiled = calculate_grades(grades)
+
+    if len(compiled) < 1:
+        print("No ZIP files.")
+        return
 
     with open("/mounted/grades.csv", "w") as f:
         writer = csv.DictWriter(f, fieldnames=compiled[0].keys())
