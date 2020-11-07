@@ -115,20 +115,30 @@ def grade(f, bootstrap_classes):
         td = Path(tempdir)
 
         # Mac fix
-        if "__MACOSX/" in z.namelist():
+        macosx = False
+        for item in z.namelist():
+            if item.startswith("__MACOSX/"): # Here we pray nobody purposely makes a directory like this
+                macosx = True
+
+        if macosx:
             sub_id = str(f).split(".")[0].replace("/mounted/", "")
-            td = td / sub_id 
+            td = td / sub_id
 
         html_paths = [Path(tempdir) / h for h in html]
         css_paths = [Path(tempdir) / h for h in css]
 
         # Get student info
-        with open(td / "metadata.yml") as f:
-            lines = f.readlines()
-            data = yaml.load(bytes("\n".join(lines[0:5]), encoding="utf8"), Loader=yaml.Loader)
-            requirements["submission_id"] = data[":id"]
-            requirements["student_name"] = data[":submitters"][0][":name"]
-            requirements["student_email"] = data[":submitters"][0][":email"]
+        try:
+            with open(td / "metadata.yml") as f:
+                lines = f.readlines()
+                data = yaml.load(bytes("\n".join(lines[0:5]), encoding="utf8"), Loader=yaml.Loader)
+                requirements["submission_id"] = data[":id"]
+                requirements["student_name"] = data[":submitters"][0][":name"]
+                requirements["student_email"] = data[":submitters"][0][":email"]
+        except:
+            requirements["submission_id"] = ""
+            requirements["student_name"] = str(f)
+            requirements["student_email"] = ""
         
         # Validate
         validator = Validator()
