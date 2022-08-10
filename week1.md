@@ -1,10 +1,10 @@
 # Week 1: C
 
-[Slides](https://docs.google.com/presentation/d/1NLNvrvymNBYZCWMGH653TIMXOnlITckDhFpXH_u30d4/edit?usp=sharing)
+Slides
 
 [Exercises](exercises/week1.md)
 
-[Exercise solutions](https://vault.cs50.io/0cdbdd66-cc22-471c-b0a8-e61895af0f2d)
+Exercise solutions
 
 
 ## Extra resources

@@ -1,10 +1,10 @@
 # Week 8: HTML, CSS, JavaScript
 
-[Slides](https://docs.google.com/presentation/d/13MATdbVQArS0nckeT0zjm5cDZ19qrxe4boKIYqVvW_4/edit?usp=sharing)
+Slides
 
 [Exercises](exercises/week8.md)
 
-[Exercise solutions](https://j50.herokuapp.com/html)
+Exercise solutions
 
 
 ## Extra resources

@@ -1,10 +1,10 @@
 # Week 5: Data Structures
 
-[Slides](https://docs.google.com/presentation/d/1fvPz3y4Q_8IzYbzk1ZlK2Eeken_NkQv6DCM7qMGD0m4/edit?usp=sharing)
+Slides
 
 [Exercises](exercises/week5.md)
 
-[Exercise solutions](https://vault.cs50.io/1e99a77d-fcc5-4a42-bce5-5e2ca065ac2d)
+Exercise solutions
 
 
 ## Extra resources

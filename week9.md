@@ -1,10 +1,10 @@
 # Week 9: Flask
 
-[Slides](https://docs.google.com/presentation/d/11KAlstZeXNef-apBKyH5JNo6zb4aLEJNWZB5buw-FQ0/edit?usp=sharing)
+Slides
 
 [Exercises](exercises/week9.md)
 
-Exercise solutions - released after section
+Exercise solutions
 
 
 ## Extra resources

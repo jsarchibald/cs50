@@ -1,10 +1,10 @@
 # Week 2: Arrays
 
-[Slides](https://docs.google.com/presentation/d/1x2N-1JpFZ28MTJV8n66RrJXpayAIFdiYSNC6wKtEPSE/edit?usp=sharing)
+Slides
 
 [Exercises](exercises/week2.md)
 
-[Exercise solutions](https://vault.cs50.io/ee044d69-383a-4dd7-97e9-285aca2cf6d5)
+Exercise solutions
 
 
 ## Extra resources
