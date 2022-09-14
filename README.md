@@ -5,11 +5,8 @@ Contact Josh at [jarchibald@college.harvard.edu](mailto:jarchibald@college.harva
 
 Lab materials will be posted each week - check back for more!
 
-Note that labs are numbered in accordance with weeks in the course - so the first lab is called week 1!
+Note that labs are numbered in accordance with weeks in the course - so the first lab as a group is called week 2, since we first met in week 2!
 
-## Links
-
-I'll be keeping track of any links I keep in the notes of my slides, or send over Zoom chat, in this Google Sheet. These are in order of appearance in the class.
 
 ## Design help
 
