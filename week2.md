@@ -1,7 +1,5 @@
 # Week 2: Arrays
 
-Slides
-
 [Exercises](exercises/week2.md)
 
 Exercise solutions

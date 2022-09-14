@@ -17,9 +17,9 @@ I wrote up a sheet with some guiding questions and general advice for code desig
 
 ## Weeks
 
-[Week 1](week1.md)
+[Week 1 - No lab!](week1.md)
 
-Week 2
+[Week 2](week2.md)
 
 Week 3
 
