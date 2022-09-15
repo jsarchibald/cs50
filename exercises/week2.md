@@ -1,4 +1,4 @@
-# Week 1 Exercises
+# Week 2 Exercises
 
 Exercises designed by CS50 staff for the section of [week 2 of CS50](https://cs50.harvard.edu/college/2020/fall/weeks/2).
 
