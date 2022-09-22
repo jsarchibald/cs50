@@ -1,6 +1,6 @@
 # Week 2 Exercises
 
-Exercises designed by CS50 staff for the section of [week 2 of CS50](https://cs50.harvard.edu/college/2020/fall/weeks/2).
+Exercises designed by CS50 staff for the section of [week 2 of CS50](https://cs50.harvard.edu/college/2022/fall/weeks/2).
 
 Exercises can be completed using [code.cs50.io](https://code.cs50.io).
 

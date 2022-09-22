@@ -1,7 +1,5 @@
 # Week 3: Algorithms
 
-Slides
-
 [Exercises](exercises/week3.md)
 
 Exercise solutions
