@@ -1,10 +1,6 @@
 # Week 4: Memory
 
-Slides
-
 [Exercises](exercises/week4.md)
-
-Exercise solutions
 
 
 ## Extra resources
