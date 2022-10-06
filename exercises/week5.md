@@ -1,8 +1,8 @@
 # Week 5 Exercises
 
-Exercises designed by CS50 staff and edited by Josh Archibald for the section of [week 5 of CS50](https://cs50.harvard.edu/college/2020/fall/weeks/5).
+Exercises designed by CS50 staff and edited by Josh Archibald for the section of [week 5 of CS50](https://cs50.harvard.edu/college/2022/fall/weeks/5).
 
-Exercises can be completed using the CS50 IDE.
+Exercises can be completed using CS50 Codespaces.
 
 
 ## Linked Lists

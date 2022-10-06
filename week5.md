@@ -1,10 +1,6 @@
 # Week 5: Data Structures
 
-Slides
-
-[Exercises](exercises/week5.md)
-
-Exercise solutions
+[Exercises for additional practice](exercises/week5.md)
 
 
 ## Extra resources

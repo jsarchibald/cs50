@@ -22,7 +22,7 @@ I wrote up a sheet with some guiding questions and general advice for code desig
 
 [Week 4](week4.md)
 
-Week 5
+[Week 5](week5.md)
 
 Week 6
 
