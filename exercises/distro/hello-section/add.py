@@ -1,6 +1,8 @@
 # Import the submit function from lib.py
 from lib import submit
 
+# TODO: import get_string and get_int
+
 
 if __name__ == "__main__":
     # TODO: create an empty dictionary

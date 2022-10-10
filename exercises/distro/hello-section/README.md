@@ -1,3 +1,9 @@
+---
+files: [add.py, delete.py]
+url: https://raw.githubusercontent.com/jsarchibald/cs50/2022/fall/exercises/distro/hello-section/README.md
+window: [terminal]
+---
+
 # Hello, section
 
 I've taken the liberty of making a small website, [J50](https://j50.herokuapp.com/), that will show photos, names, class years, and present emotional states of anyone who submits! There's a catch, though: to submit, you have to write a Python script to do so.*
