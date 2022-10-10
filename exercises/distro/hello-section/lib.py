@@ -18,7 +18,7 @@ def get_workspace_id():
 
 def submit(data):
     """Submits some data to the server.
-    
+
     Args:
         data (dict): a dictionary of data, mapping keys to values.
 
@@ -28,26 +28,29 @@ def submit(data):
 
     print("Ok, contacting server...")
 
-    
+
     data["_CS50_WORKSPACE_ID"] = get_workspace_id()
-    r = requests.post(url.urljoin(BASE_URL, "/submit"), data=data)
-    
+    r = requests.post(url.urljoin(BASE_URL, "/submission"), data=data)
+
     return r.status_code
 
 
-def delete(data):
+def delete(id):
     """Deletes a submission from the server.
-    
+
     Args:
-        data (dict): a dictionary of data, mapping keys to values.
+        id (int): the ID of the submission to delete.
 
     Returns:
         An integer status code from the completed request.
     """
-    
+
     print("Ok, contacting server...")
 
-    data["_CS50_WORKSPACE_ID"] = get_workspace_id()
-    r = requests.post(url.urljoin(BASE_URL, "/delete"), data=data)
-    
+    data = {
+        "_CS50_WORKSPACE_ID": get_workspace_id()
+    }
+
+    r = requests.delete(url.urljoin(BASE_URL, f"/submission/{id}"), data=data)
+
     return r.status_code
