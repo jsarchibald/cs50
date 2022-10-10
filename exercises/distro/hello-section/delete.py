@@ -10,3 +10,5 @@ if __name__ == "__main__":
     # TODO: call delete with the dictionary as an argument
 
     # TODO: check that delete didn't cause an error
+
+    raise NotImplementedError("This code isn't done yet!")

@@ -1,10 +1,6 @@
 # Week 6: Python
 
-Slides
-
 [Exercises](exercises/week6.md)
-
-Exercise solutions
 
 
 ## Extra resources

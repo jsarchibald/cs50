@@ -1,6 +1,6 @@
 # Week 6 Exercises
 
-Exercises designed by Josh Archibald for the section of [week 6 of CS50](https://cs50.harvard.edu/college/2020/fall/weeks/6).
+Exercises designed by Josh Archibald for the section of [week 6 of CS50](https://cs50.harvard.edu/college/2022/fall/weeks/6).
 
 Exercises can be completed using the CS50 IDE.
 
@@ -19,7 +19,7 @@ I've taken the liberty of making a small website, [J50](https://j50.herokuapp.co
 
 Download the distribution code to your CS50 IDE instance by running the following commands in your IDE terminal:
 
-`wget https://raw.githubusercontent.com/jsarchibald/cs50/2020/fall/exercises/distro/hello-section.zip`
+`wget https://raw.githubusercontent.com/jsarchibald/cs50/2022/fall/exercises/distro/hello-section.zip`
 
 `unzip hello-section.zip`
 

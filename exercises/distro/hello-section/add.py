@@ -10,3 +10,6 @@ if __name__ == "__main__":
     # TODO: call submit, passing the dictionary as an argument
 
     # TODO: check for errors from submit
+
+
+    raise NotImplementedError("This code isn't done yet!")
