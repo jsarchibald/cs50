@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 
 
-PYTHON_DEADLINE = datetime(2020, 10, 21)
+PYTHON_DEADLINE = datetime(2022, 10, 14)
 HTML_DEADLINE = datetime(2020, 10, 28)
 
 
@@ -25,6 +25,7 @@ class Submission(db.Model):
     feeling = db.Column(db.String(300), nullable=False)
     url = db.Column(db.String(300), nullable=False)
     script = db.Column(db.String(10000), nullable=False)
+    workspace = db.Column(db.String(255), nullable=False)
     updated = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
 
@@ -34,6 +35,7 @@ class HTMLSubmission(db.Model):
     html = db.Column(db.String(100000), nullable=False)
     updated = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     ip = db.Column(db.String(255))
+    workspace = db.Column(db.String(255), nullable=False)
 
 
 # Error handling
@@ -62,13 +64,10 @@ def code(sid):
         return error("Couldn't open the code for that submission.")
 
 
-@app.route("/delete", methods=["POST"])
-def delete():
-    if request.form["id"] is None:
-        return error("Must provide an ID to delete a submission")
-
+@app.route("/submission/<sid:int>", methods=["DELETE"])
+def delete(sid):
     try:
-        submission = Submission.query.filter_by(id=int(request.form["id"])).first()
+        submission = Submission.query.filter_by(id=sid).first()
         db.session.delete(submission)
         db.session.commit()
 
@@ -77,12 +76,12 @@ def delete():
         return error("Something went wrong :(")
 
 
-@app.route("/submit", methods=["POST"])
+@app.route("/submission", methods=["POST"])
 def submit():
     if datetime.now() > PYTHON_DEADLINE:
         return error("Past expiration date for Python submissions")
 
-    fields = ["name", "year", "feeling", "url", "script"]
+    fields = ["name", "year", "feeling", "url", "script", "_CS50_WORKSPACE_ID"]
     for field in fields:
         if request.form[field] is None:
             return error("Must provide data for all fields: {}".format(", ".join(fields)))
@@ -92,7 +91,8 @@ def submit():
                                 year=int(request.form["year"]),
                                 feeling=request.form["feeling"],
                                 url=request.form["url"],
-                                script=request.form["script"])
+                                script=request.form["script"],
+                                workspace = request.form["_CS50_WORKSPACE_ID"])
         db.session.add(submission)
         db.session.commit()
 
