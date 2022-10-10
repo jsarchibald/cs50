@@ -55,16 +55,16 @@ def index():
     return render_template("index.html", submissions=submissions)
 
 
-@app.route("/code/<sid>")
+@app.route("/code/<int:sid>")
 def code(sid):
     try:
-        submission = Submission.query.filter_by(id=int(sid)).first()
+        submission = Submission.query.filter_by(id=sid).first()
         return render_template("code.html", submission=submission)
     except:
         return error("Couldn't open the code for that submission.")
 
 
-@app.route("/submission/<sid:int>", methods=["DELETE"])
+@app.route("/submission/<int:sid>", methods=["DELETE"])
 def delete(sid):
     try:
         submission = Submission.query.filter_by(id=sid).first()
