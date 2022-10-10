@@ -22,9 +22,11 @@ I've taken the liberty of making a small website, [J50](https://j50.herokuapp.co
 
 Download the distribution code to your CS50 IDE instance by running the following commands in your IDE terminal:
 
-`wget https://raw.githubusercontent.com/jsarchibald/cs50/2022/fall/exercises/distro/hello-section.zip`
+```
+wget https://raw.githubusercontent.com/jsarchibald/cs50/2022/fall/exercises/distro/hello-section.zip
 
-`unzip hello-section.zip`
+unzip hello-section.zip
+```
 
 You'll notice there are three files provided to you! You'll be writing most of `add.py` and `delete.py`. In `lib.py` I wrote some handy helper functions to handle the trickiest parts of the implementation for you:
 
@@ -45,6 +47,16 @@ When you run `python add.py`, the program should ask you for your name, year, cu
 4. Check that **submit** returns 200 - if it does, congratulate the user; otherwise, inform them of an error.
 
 
+### Hints
+
+- You should write your code in the block of code nested inside `if __name__ === "main":`. That's the main program that will be used when the code is run.
+- To initialize an empty dictionary, you can write something like `data = dict()`.
+- To access the value associated with a key, e.g. `name`, in a dictionary, you can write something like `data["name"]`.
+- To get user input, use the `get_int` or `get_string` functions from the CS50 library for Python. You may need to add a line to the top along the lines of `from cs50 import get_int, get_string`.
+- To access the contents of the file in which you're writing your code, you can write this line of code: `with open(__file__) as f:` to open the file. In the block inside that `with` statement, you can then read the entire file's contents as a string by typing `f.read()`.
+- You can check that your code works by running it and checking back on the submission site at [https://j50.herokuapp.com](https://j50.herokuapp.com/).
+
+
 ## delete.py
 
 When you run `python delete.py`, the program should ask for the ID of the submission to delete (this can be found on the submissions site). It will submit that ID to the server, and print some message of congratulations if it worked (e.g., returned 200), and some error message otherwise.
@@ -56,12 +68,11 @@ When you run `python delete.py`, the program should ask for the ID of the submis
 3. Check that **delete** returns 200 - if it does, congratulate the user; otherwise, inform them of an error.
 
 
-## Hints
+### Hints
 
 - You should write your code in the block of code nested inside `if __name__ === "main":`. That's the main program that will be used when the code is run.
 - To initialize an empty dictionary, you can write something like `data = dict()`.
 - To access the value associated with a key, e.g. `name`, in a dictionary, you can write something like `data["name"]`.
-- To get user input, use the `get_int` or `get_string` functions from the CS50 library for Python. You may need to add a line to the top along the lines of `from cs50 import get_int, get_string`.
-- To access the contents of the file in which you're writing your code, you can write this line of code: `with open(__file__) as f:` to open the file. In the block inside that `with` statement, you can then read the entire file's contents as a string by typing `f.read()`.
+- To get user input, use the `get_int` function from the CS50 library for Python. You may need to add a line to the top along the lines of `from cs50 import get_int`.
 - To use command-line arguments, you'll have to `import sys`. Then, using similar syntax as in C, you can access `sys.argv[index]`, where `index` is some integer.
 - You can check that your code works by running it and checking back on the submission site at [https://j50.herokuapp.com](https://j50.herokuapp.com/).
