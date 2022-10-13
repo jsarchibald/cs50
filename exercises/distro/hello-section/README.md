@@ -44,7 +44,7 @@ When you run `python add.py`, the program should ask you for your name, year, cu
 1. Create an empty dictionary.
 2. Fill in five keys in the dictionary: *name*, *year*, *feeling*, *url*, and *script*. All are strings except *year*, which is an integer. *url* means image URL. *script* means the entire contents of `add.py`, as a string.
 3. Use **submit**, something like this: `submit(data)`.
-4. Check that **submit** returns 200 - if it does, congratulate the user; otherwise, inform them of an error.
+4. Check that **submit** returns 200 - if it does, congratulate the user; otherwise, inform them of an error and exit from the program with error code 1.
 
 
 ### Hints
@@ -54,6 +54,7 @@ When you run `python add.py`, the program should ask you for your name, year, cu
 - To access the value associated with a key, e.g. `name`, in a dictionary, you can write something like `data["name"]`.
 - To get user input, use the `get_int` or `get_string` functions from the CS50 library for Python. You may need to add a line to the top along the lines of `from cs50 import get_int, get_string`.
 - To access the contents of the file in which you're writing your code, you can write this line of code: `with open(__file__) as f:` to open the file. In the block inside that `with` statement, you can then read the entire file's contents as a string by typing `f.read()`.
+- To return an error code, as in C, use `sys.exit(num)`, where `num` is the error code number. E.g., to exit with error code 1, write `sys.exit(1)`.
 - You can check that your code works by running it and checking back on the submission site at [https://j50.herokuapp.com](https://j50.herokuapp.com/).
 
 
@@ -65,11 +66,18 @@ When you run `python delete.py`, the program should ask for the ID of the submis
 
 1. Prompt the user for an integer ID to delete.
 2. Use **delete**, something like this: `delete(id)`.
-3. Check that **delete** returns 200 - if it does, congratulate the user; otherwise, inform them of an error.
+3. Check that **delete** returns 200 - if it does, congratulate the user; otherwise, inform them of an error and exit the program with error code 1.
 
 
 ### Hints
 
 - You should write your code in the block of code nested inside `if __name__ === "main":`. That's the main program that will be used when the code is run.
 - To get user input, use the `get_int` function from the CS50 library for Python. You may need to add a line to the top along the lines of `from cs50 import get_int`.
+- To return an error code, as in C, use `sys.exit(num)`, where `num` is the error code number. E.g., to exit with error code 1, write `sys.exit(1)`.
 - You can check that your code works by running it and checking back on the submission site at [https://j50.herokuapp.com](https://j50.herokuapp.com/).
+
+
+## Questions
+
+- How can you use `input` instead of `get_string` and `get_int`?
+- How could you use command-line arguments instead of getting input -- for example, what if I wanted to run `python delete.py 3` to delete submission number 3?
