@@ -1,4 +1,0 @@
-check50:
-  files:
-    - !exclude "*"
-    - !require "cabbages.db"
