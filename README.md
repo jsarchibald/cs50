@@ -14,3 +14,5 @@ To access the links I provide in class, [please click here](https://docs.google.
 ## Section Materials
 
 [Week 0](week0.md)
+
+[Week 1](week1.md)
