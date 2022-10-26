@@ -50,9 +50,9 @@ def simulate():
     clear = ["invoices", "cabbages"]
     for table in clear:
         db.execute(f"DELETE FROM {table}")
-        #db.execute(f"DELETE FROM sqlite_sequence WHERE name='{table}'")
 
     print(f"cleared existing data from {', '.join(clear)}")
+
 
     # Price per pound of different cabbage types, from https://www.ers.usda.gov/webdocs/DataFiles/51035/cabbage.xlsx?v=9564
     CABBAGE_TYPES = {
@@ -135,15 +135,16 @@ def simulate():
             if batch_id == RECALL["batch_id"]:
                 customer_id = name_to_id[random.choice(RECALL["affected"])]
 
-            # I'm using format strings here so that I can batch all the calls into one (big runtime difference)
-            # and because I am generating the values, so I can trust them. There is no user input here.
+            # I am generating the values, so I can trust them. There is no user input here. So format strings are ok-ish.
             cabbage_query += f" ('{cabbage_type}', {batch_id}, {invoice + 1}, {value}),"
 
         invoice_query += f" ({customer_id}, {total_value}),"
 
+
     # Insert invoices
     db.execute(invoice_query[:-1] + ";")
     print("created invoices")
+
 
     # Insert cabbages
     db.execute(cabbage_query[:-1] + ";")
@@ -160,6 +161,7 @@ def simulate():
     z.writestr("before.db", before)
     z.writestr("after.db", after)
     z.close()
+
 
     print("backed up database before and after")
 
