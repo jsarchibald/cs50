@@ -1,3 +1,4 @@
+from calendar import c
 import check50
 import re
 
@@ -51,8 +52,10 @@ def orders():
 def count_works():
     """COUNT query counts the affected cabbages"""
 
+    check50.include("count_works.sql")
+
     res = check50.run("sqlite3 cabbages.db < recall.sql").stdout()
-    expected = check50.run('sqlite3 cabbages.db "SELECT COUNT(id) FROM cabbages WHERE batch_id=33;"').stdout()
+    expected = check50.run('sqlite3 cabbages.db < count_works.sql').stdout()
 
     if expected not in res:
         raise check50.Mismatch(expected, res)
@@ -61,9 +64,11 @@ def count_works():
 @check50.check(exists)
 def average_works():
     """AVG query averages value of the affected cabbages"""
+    
+    check50.include("average_works.sql")
 
     res = check50.run("sqlite3 cabbages.db < recall.sql").stdout()
-    expected = check50.run('sqlite3 cabbages.db "SELECT AVG(value) FROM cabbages WHERE batch_id=33;"').stdout()
+    expected = check50.run('sqlite3 cabbages.db < average_works.sql').stdout()
 
     if expected not in res:
         raise check50.Mismatch(expected, res)
@@ -73,8 +78,10 @@ def average_works():
 def sum_works():
     """SUM query gets total value of the affected cabbages"""
 
+    check50.include("sum_works.sql")
+
     res = check50.run("sqlite3 cabbages.db < recall.sql").stdout()
-    expected = check50.run('sqlite3 cabbages.db "SELECT SUM(value) FROM cabbages WHERE batch_id=33;"').stdout()
+    expected = check50.run('sqlite3 cabbages.db < sum_works.sql').stdout()
 
     if expected not in res:
         raise check50.Mismatch(expected, res)
@@ -84,8 +91,10 @@ def sum_works():
 def names():
     """gets names and emails of affected customers"""
 
+    check50.include("names.sql")
+
     res = check50.run("sqlite3 cabbages.db < recall.sql").stdout()
-    expected = check50.run('sqlite3 cabbages.db "SELECT name, email FROM customers WHERE id IN (SELECT customer_id FROM invoices WHERE id IN (SELECT invoice_id FROM cabbages WHERE batch_id=33)) ORDER BY name;"').stdout()
+    expected = check50.run('sqlite3 cabbages.db < names.sql').stdout()
 
     if expected not in res:
         raise check50.Mismatch(expected, res)

@@ -1,0 +1,1 @@
+SELECT name, email FROM customers WHERE id IN (SELECT customer_id FROM invoices WHERE id IN (SELECT invoice_id FROM cabbages WHERE batch_id=33)) ORDER BY name;
