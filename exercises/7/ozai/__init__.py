@@ -32,11 +32,8 @@ def delete():
 def update_works():
     """UPDATE query erases all references to Ozai"""
 
-    db = SQL("sqlite:///cabbages.db")
-    ozai_id = db.execute("SELECT id FROM customers WHERE name=?", "Ozai")
-
     res = check50.run("sqlite3 cabbages.db < ozai.sql").stdout()
-    res2 = check50.run('sqlite3 cabbages.db "SELECT id FROM invoices WHERE customer_id={}"'.format(ozai_id[0]["id"])).stdout()
+    res2 = check50.run("sqlite3 cabbages.db < update_works.sql").stdout()
     
     if res2 != "":
         raise check50.Mismatch("", res2)
@@ -46,8 +43,7 @@ def update_works():
 def delete_works():
     """DELETE query erases Ozai from customers table"""
     
-    res = check50.run('sqlite3 cabbages.db "SELECT id FROM customers WHERE name=\'Ozai\'"').stdout()
+    res = check50.run("sqlite3 cabbages.db < delete_works.sql").stdout()
     
     if res != "":
         raise check50.Mismatch("", res)
- 

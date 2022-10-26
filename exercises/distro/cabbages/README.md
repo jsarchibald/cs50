@@ -6,11 +6,9 @@ window: [terminal]
 
 # My Cabbages!
 
-This is admittedly a very COVID-19, quarantine 2020 problem. *Avatar: The Last Airbender* was pretty relevant to my life, my friends' lives, and my students' lives at that time, so much so that the original specification for this problem was:
+This is admittedly a very COVID-19, quarantine 2020 problem. *Avatar: The Last Airbender* was pretty relevant to my life, my friends' lives, and my students' lives at that time, so much so that the original introduction for this problem was:
 
-<blockquote>
-I feel reasonably comfortable saying that I'm not the only one here who watched *Avatar: The Last Airbender* while quarantining this summer. In fact, two of you made Avatar-themed Scratch projects for pset 0!
-</blockquote>
+- *I feel reasonably comfortable saying that I'm not the only one here who watched Avatar: The Last Airbender while quarantining this summer. In fact, two of you made Avatar-themed Scratch projects for pset 0!*
 
 Regardless of the change in circumstances since those dark days, I still think this problem is kinda fun.
 
@@ -27,19 +25,26 @@ To get the distribution code, run:
 
 ```
 wget https://raw.githubusercontent.com/jsarchibald/cs50/2022/fall/exercises/distro/cabbages.zip
+```
+
+```
 unzip cabbages.zip
+```
+
+```
 rm -f cabbages.zip
 ```
 
-As a useful exercise, run the following:
+Go ahead and open the `cabbages` directory in CS50 Labs view.
+
+As a useful exercise, run the following in your terminal:
 
 ```
-ls cabbages
+ls
 ```
 
 You'll see that the `cabbages` directory contains many different files, including these instructions (`README.md`), a bunch of `.sql` files (which you will fill with your code), a file called `cabbages.db` (which will become a SQLite database), and `simulate.py`, which is a fun utility I wrote for your use later in this problem.
 
-Go ahead and open the `cabbages` directory in CS50 Labs view.
 
 
 ## Background
