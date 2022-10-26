@@ -62,6 +62,15 @@ SQLite has a handy command-line program we can use to work with databases (kind 
 To close the database, just type `CTRL-D`.
 
 
+### Running `.sql` files from the command-line.
+
+There are many ways to do this, but here's one of my faves:
+
+```
+sqlite3 cabbages.db < name_of_file.sql
+```
+
+
 ## Create some tables.
 
 Let's get this database started! Cabbage Man is hoping to have three tables to get off the ground:
@@ -100,7 +109,7 @@ CREATE TABLE table_name (
 
 So for each column we just need to know what we want to call it and the type it should be (along with any special parameters to go with it, which we'll see below).
 
-Let's create the `customers` table together:
+Let's create the `customers` table together, by adding to `start.sql`:
 
 ```sql
 CREATE TABLE customers (
@@ -128,7 +137,10 @@ This is closer to what you saw in lecture. Both are correct. The latter syntax i
 Cool! We now have a customers table. Go ahead and use similar syntax to create the `invoices` and `cabbages` tables, making sure to match the schemas defined at the top of this section.
 
 ### Before moving on
-- Did you create the `invoices` and `cabbages` tables according to the spec above?
+- Did you write the code to create the `invoices` and `cabbages` tables according to the spec above?
+
+### Something to ponder
+- We didn't use foreign keys in this database model, but we definitely could have! Why might we want to, and what specifically would those foreign keys look like?
 
 
 ## Inserting some data into the database.
@@ -157,15 +169,21 @@ Ok, go ahead and practice this syntax by inserting any two of the following cust
 
 
 ### Before moving on
-- Did you add two of those people into the customers database?
+- Did you write the code to add two of those people into the customers database?
+
+### Run your code
+
+Run your code like follows: 
+
+```
+sqlite3 cabbages.db < start.sql
+```
 
 ### Check your work
 
 I made a check50 for this first part of our work with the cabbage merchant!
 
-First, close out of the SQLite command-line program by pressing `CTRL-D`.
-
-Then, run this in your terminal to check your answers:
+Run this in your terminal to check your answers:
 
 ```
 check50 jsarchibald/cs50/2022/fall/exercises/7/start
