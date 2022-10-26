@@ -73,6 +73,8 @@ def inserted_two_customers():
     """customers table contains at least two rows"""
 
     res = check50.run('sqlite3 cabbages.db < inserted_two_customers.sql').stdout()
+    check50.log(res)
+    check50.log(res.count("\n"))
 
     if res.count("\n") < 2:
         raise check50.Failure("customers table doesn't have at least two rows")
