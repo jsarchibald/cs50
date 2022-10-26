@@ -72,6 +72,8 @@ def invoices_table():
 def inserted_two_customers():
     """customers table contains at least two rows"""
 
+    check50.include("inserted_two_customers.sql")
+
     res = check50.run('sqlite3 cabbages.db < inserted_two_customers.sql').stdout()
     check50.log(res)
 
