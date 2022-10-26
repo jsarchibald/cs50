@@ -32,6 +32,8 @@ def delete():
 def update_works():
     """UPDATE query erases all references to Ozai"""
 
+    check50.include("update_works.sql")
+
     res = check50.run("sqlite3 cabbages.db < ozai.sql").stdout()
     res2 = check50.run("sqlite3 cabbages.db < update_works.sql").stdout()
     
@@ -42,6 +44,8 @@ def update_works():
 @check50.check(update_works)
 def delete_works():
     """DELETE query erases Ozai from customers table"""
+    
+    check50.include("delete_works.sql")
     
     res = check50.run("sqlite3 cabbages.db < delete_works.sql").stdout()
     
