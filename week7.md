@@ -1,10 +1,6 @@
 # Week 7: SQL
 
-Slides
-
 [Exercises](exercises/week7.md)
-
-Exercise solutions
 
 
 ## Extra resources
