@@ -16,7 +16,7 @@ David,617-555-0103
 
 ## Exercise solutions
 
-Check back soon!
+No exercises this week!
 
 
 ## Extra resources
