@@ -30,3 +30,5 @@ To access the links I provide in class, [please click here](https://docs.google.
 [Week 7](week7.md)
 
 [Week 8](week8.md)
+
+[Week 9](week9.md)

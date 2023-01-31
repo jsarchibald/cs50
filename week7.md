@@ -2,11 +2,6 @@
 
 [Slides](https://docs.google.com/presentation/d/1XasyrrzoP1oofTrfdxdBTeFXyiB4HY2mx5wSjazSqNE/edit?usp=sharing)
 
-## Exercise solutions
-
-Check back soon!
-
-
 ## Extra resources
 
 [Video on SQL](https://www.youtube.com/watch?v=AywtnUjQ6X4)

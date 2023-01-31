@@ -2,15 +2,6 @@
 
 [Slides](https://docs.google.com/presentation/d/1Z4HPSFdXiLWDdG9WiNBdZThVxdIDbUK89s57zhXZRec/edit?usp=sharing)
 
-## Exercise solutions
-
-Check back soon!
-
-
-## Extra resources
-
-
-
 ## Extra resources
 
 [HTML reference](https://www.w3schools.com/tags/default.asp)
